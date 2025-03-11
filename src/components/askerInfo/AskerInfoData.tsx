@@ -59,12 +59,15 @@ export const AskerInfoData = () => {
 				<p className="askerInfo__data__label">
 					{translate('userProfile.data.agencyName')}
 				</p>
-				<p className={
-					activeSession.item.agencyName
-						? `askerInfo__data__content`
-						: `askerInfo__data__content askerInfo__data__content--empty`
-				}>
-					{activeSession.item.agencyName || translate('profile.noContent')}
+				<p
+					className={
+						activeSession.item.agencyName
+							? `askerInfo__data__content`
+							: `askerInfo__data__content askerInfo__data__content--empty`
+					}
+				>
+					{activeSession.item.agencyName ||
+						translate('profile.noContent')}
 				</p>
 			</div>
 			{/* Registration Date */}
@@ -72,12 +75,14 @@ export const AskerInfoData = () => {
 				<p className="askerInfo__data__label">
 					{translate('userProfile.data.createDate')}
 				</p>
-				<p className={
-					activeSession.item.create_date
-						? `askerInfo__data__content`
-						: `askerInfo__data__content askerInfo__data__content--empty`
-				}>
-					{activeSession.item.create_date 
+				<p
+					className={
+						activeSession.item.create_date
+							? `askerInfo__data__content`
+							: `askerInfo__data__content askerInfo__data__content--empty`
+					}
+				>
+					{activeSession.item.create_date
 						? formatDate(activeSession.item.create_date)
 						: translate('profile.noContent')}
 				</p>
