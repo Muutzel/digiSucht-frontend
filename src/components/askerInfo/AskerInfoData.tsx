@@ -12,7 +12,6 @@ import {
 } from '../profile/profileHelpers';
 import { Text } from '../text/Text';
 import { useTranslation } from 'react-i18next';
-import { format } from 'date-fns';
 
 export const AskerInfoData = () => {
 	const { t: translate } = useTranslation(['common', 'consultingTypes']);
@@ -23,16 +22,6 @@ export const AskerInfoData = () => {
 	const userSessionData = getContact(activeSession).sessionData;
 	const preparedUserSessionData =
 		convertUserDataObjectToArray(userSessionData);
-
-	// Format date if it exists
-	const formatDate = (dateString) => {
-		if (!dateString) return '';
-		try {
-			return format(new Date(dateString), 'dd.MM.yyyy');
-		} catch (e) {
-			return dateString;
-		}
-	};
 
 	return (
 		<>
@@ -52,39 +41,6 @@ export const AskerInfoData = () => {
 								{ ns: 'consultingTypes' }
 							)
 						: ''}
-				</p>
-			</div>
-			{/* Agency Name */}
-			<div className="askerInfo__data__item">
-				<p className="askerInfo__data__label">
-					{translate('userProfile.data.agencyName')}
-				</p>
-				<p
-					className={
-						activeSession.item.agencyName
-							? `askerInfo__data__content`
-							: `askerInfo__data__content askerInfo__data__content--empty`
-					}
-				>
-					{activeSession.item.agencyName ||
-						translate('profile.noContent')}
-				</p>
-			</div>
-			{/* Registration Date */}
-			<div className="askerInfo__data__item">
-				<p className="askerInfo__data__label">
-					{translate('userProfile.data.createDate')}
-				</p>
-				<p
-					className={
-						activeSession.item.create_date
-							? `askerInfo__data__content`
-							: `askerInfo__data__content askerInfo__data__content--empty`
-					}
-				>
-					{activeSession.item.create_date
-						? formatDate(activeSession.item.create_date)
-						: translate('profile.noContent')}
 				</p>
 			</div>
 			{activeSession.item.consultingType === 0 &&

@@ -1,5 +1,7 @@
 {
 	"profile": {
+		"agencyName": "Agency Name",
+		"createDate": "Creation Date",
 		"tools": {
 			"documentation": "Documentation"
 		}
