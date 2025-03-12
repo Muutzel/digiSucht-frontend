@@ -1210,7 +1210,7 @@
 				},
 				"unauthorized": {
 					"otp": "Ihre Zugangsdaten sind nicht korrekt. Bitte versuchen Sie es erneut.",
-					"text": "Benutzername oder Passwort sind nicht korrekt. Bitte versuchen Sie es erneut."
+					"text": "Falsche Zugangsdaten oder temporäre Sperre wegen mehrfacher Fehlversuche (15 Min.). Bitte versuchen Sie es (später) erneut."
 				}
 			}
 		}
