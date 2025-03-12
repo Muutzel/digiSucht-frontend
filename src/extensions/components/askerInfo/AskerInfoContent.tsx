@@ -22,6 +22,7 @@ import { AskerInfoDocumentation } from './AskerInfoDocumentation';
 import { apiGetUserDataBySessionId } from '../../../api/apiGetUserDataBySessionId';
 import { useTranslation } from 'react-i18next';
 import { Box, BoxTypes } from '../../../components/box/Box';
+import { format } from 'date-fns';
 
 export const AskerInfoContent = () => {
 	const { t: translate } = useTranslation();
@@ -40,6 +41,16 @@ export const AskerInfoContent = () => {
 				.catch(console.log);
 		}
 	}, [activeSession?.item?.id]);
+
+	// Format date if it exists
+	const formatDate = (dateString) => {
+		if (!dateString) return '';
+		try {
+			return format(new Date(dateString), 'dd.MM.yyyy');
+		} catch (e) {
+			return dateString;
+		}
+	};
 
 	const isSessionAssignAvailable = useCallback(() => {
 		const isPeerChat = activeSession.item.isPeerChat;
@@ -98,6 +109,18 @@ export const AskerInfoContent = () => {
 							title="profile.postalCode"
 							content={sessionData?.postcode}
 						/>
+						{sessionData?.agencyName && (
+							<ProfileDataItem
+								title="profile.agencyName"
+								content={sessionData.agencyName}
+							/>
+						)}
+						{sessionData?.create_date && (
+							<ProfileDataItem
+								title="profile.createDate"
+								content={formatDate(sessionData.create_date)}
+							/>
+						)}
 					</ProfileBox>
 				)}
 

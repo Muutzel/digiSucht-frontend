@@ -2511,6 +2511,8 @@
 		"data": {
 			"addictiveDrugs": "Narcotics",
 			"age": "Age",
+			"agencyName": "Agency Name",
+			"createDate": "Registration Date",
 			"gender": "Gender",
 			"postcode": "Postal code",
 			"relation": "Background",
