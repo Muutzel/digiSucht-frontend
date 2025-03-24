@@ -759,7 +759,7 @@
 			"headline": "Chat-Info",
 			"settings": {
 				"agency": "Beratungsstelle",
-				"createDate": "Erstellungsdatum",
+				"createDate": "Registrierungsdatum",
 				"creator": "Ersteller",
 				"duration": "Dauer",
 				"edit": "Bearbeiten",
