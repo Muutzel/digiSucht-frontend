@@ -571,7 +571,8 @@ export const SessionMenu = (props: SessionMenuProps) => {
 
 				{!hasUserAuthority(AUTHORITIES.ASKER_DEFAULT, userData) &&
 					tenant?.settings?.featureToolsEnabled &&
-					activeSession?.item.id && (
+					activeSession?.item.id &&
+					!activeSession.isGroup && (
 						<div
 							className="sessionMenu__item"
 							onClick={() => openToolsLink()}
