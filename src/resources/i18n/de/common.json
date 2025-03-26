@@ -759,7 +759,7 @@
 			"headline": "Chat-Info",
 			"settings": {
 				"agency": "Beratungsstelle",
-				"createDate": "Erstellungsdatum",
+				"createDate": "Registrierungsdatum",
 				"creator": "Ersteller",
 				"duration": "Dauer",
 				"edit": "Bearbeiten",
@@ -1210,7 +1210,7 @@
 				},
 				"unauthorized": {
 					"otp": "Ihre Zugangsdaten sind nicht korrekt. Bitte versuchen Sie es erneut.",
-					"text": "Benutzername oder Passwort sind nicht korrekt. Bitte versuchen Sie es erneut."
+					"text": "Falsche Zugangsdaten oder temporäre Sperre wegen mehrfacher Fehlversuche (15 Min.). Bitte versuchen Sie es (später) erneut."
 				}
 			}
 		}
@@ -2267,7 +2267,7 @@
 					}
 				},
 				"step4": {
-					"copy": "Geben Sie den Einmal-Code ein, der von der App generiert wird und klicken Sie auf „Speichern“, um die Einrichtung abzuschließen.",
+					"copy": "Geben Sie den Einmal-Code ein, der von der App generiert wird und klicken Sie auf „Speichern",
 					"title": "Einmal-Code eingeben",
 					"visualisation": {
 						"label": "Verknüpfung"
@@ -2533,6 +2533,8 @@
 		"data": {
 			"addictiveDrugs": "Suchtmittel",
 			"age": "Alter",
+			"agencyName": "Beratungsstelle",
+			"createDate": "Registrierungsdatum",
 			"gender": "Geschlecht",
 			"postcode": "Postleitzahl",
 			"relation": "Hintergrund",

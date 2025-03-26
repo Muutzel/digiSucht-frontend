@@ -21,15 +21,16 @@ export const Walkthrough = () => {
 	const history = useHistory();
 
 	const onChangeStep = useCallback(() => {
-		ref.current.props.steps.forEach((step, key) => {
-			if (step.element) {
-				ref.current.introJs._introItems[key].element =
-					document.querySelector(step.element);
-				ref.current.introJs._introItems[key].position = step.position
-					? step.position
-					: 'bottom';
-			}
-		});
+		setTimeout(() => {
+			ref.current.props.steps.forEach((step, key) => {
+				if (step.element) {
+					ref.current.introJs._introItems[key].element =
+						document.querySelector(step.element);
+					ref.current.introJs._introItems[key].position =
+						step.position ? step.position : 'bottom';
+				}
+			});
+		}, 100);
 	}, [ref]);
 
 	const hasTeamAgency = userData.agencies?.some(
