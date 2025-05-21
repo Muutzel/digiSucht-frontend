@@ -495,7 +495,7 @@
 				"confirm": "Ja",
 				"deny": "Nein"
 			},
-			"copy": "Möchten Sie den Chat wirklich löschen?",
+			"copy": "Durch das Löschen des Chats werden sowohl der Chat als auch der Ratgeber gelöscht. Möchten Sie den Chat wirklich löschen?",
 			"headline": "Chat löschen"
 		},
 		"errorOverlay": {

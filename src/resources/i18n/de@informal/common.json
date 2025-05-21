@@ -19,7 +19,7 @@
 		"onlineMeeting": {
 			"overlay": {
 				"delete": {
-					"copy": "Möchtest Du diesen Video-Call wirklich löschen?"
+					"copy": "Durch das Löschen des Chats werden sowohl der Chat als auch der Ratgeber gelöscht. Möchtest Du diesen Video-Call wirklich löschen?"
 				},
 				"start": {
 					"copy": "Du startest jetzt den Video-Call. Eingeladene Teilnehmer_innen können ab sofort mit dem Einladungslink beitreten."

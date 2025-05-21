@@ -485,7 +485,7 @@
 				"confirm": "yes",
 				"deny": "no"
 			},
-			"copy": "Do you really want to delete the chat?",
+			"copy": "By deleting the chat, both the chat and the advice seeker account will be deleted. Do you really want to delete the chat?",
 			"headline": "Delete chat"
 		},
 		"errorOverlay": {
