@@ -123,7 +123,7 @@
 	},
 	"deleteSession": {
 		"confirmOverlay": {
-			"copy": "Möchtest Du den Chat wirklich löschen?"
+			"copy": "Wenn Du die Beratung löscht, wird das Konto der ratsuchenden Person gelöscht und sie kann sich nicht mehr auf der Beratungsplattform anmelden."
 		},
 		"errorOverlay": {
 			"headline": "Ups! Wir konnten den Chat gerade nicht löschen. Bitte versuche es erneut."
