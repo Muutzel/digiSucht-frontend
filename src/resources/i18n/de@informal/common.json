@@ -19,7 +19,7 @@
 		"onlineMeeting": {
 			"overlay": {
 				"delete": {
-					"copy": "Durch das Löschen des Chats werden sowohl der Chat als auch der Ratgeber gelöscht. Möchtest Du diesen Video-Call wirklich löschen?"
+					"copy": "Möchtest Du diesen Video-Call wirklich löschen?"
 				},
 				"start": {
 					"copy": "Du startest jetzt den Video-Call. Eingeladene Teilnehmer_innen können ab sofort mit dem Einladungslink beitreten."
@@ -123,7 +123,7 @@
 	},
 	"deleteSession": {
 		"confirmOverlay": {
-			"copy": "Möchtest Du den Chat wirklich löschen?"
+			"copy": "Wenn Du die Beratung löscht, wird das Konto der ratsuchenden Person gelöscht und sie kann sich nicht mehr auf der Beratungsplattform anmelden."
 		},
 		"errorOverlay": {
 			"headline": "Ups! Wir konnten den Chat gerade nicht löschen. Bitte versuche es erneut."
