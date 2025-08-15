@@ -485,8 +485,8 @@
 				"confirm": "yes",
 				"deny": "no"
 			},
-			"copy": "Do you really want to delete the chat?",
-			"headline": "Delete chat"
+			"copy": "If you delete the consultation, the account of the person seeking advice will be deleted, and they will no longer be able to login to the counseling platform.",
+			"headline": "Delete consultation?"
 		},
 		"errorOverlay": {
 			"button": "ok",
