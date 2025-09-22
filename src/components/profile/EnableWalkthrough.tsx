@@ -27,6 +27,7 @@ export const EnableWalkthrough = () => {
 				.catch(console.log);
 		}
 		if (hasUserAuthority(AUTHORITIES.ASKER_DEFAULT, userData)) {
+			sessionStorage.removeItem('currentLoginSession');
 			apiPatchAdviceSeekerData({
 				walkThroughEnabled: !isWalkThroughEnabled
 			})

@@ -30,7 +30,7 @@ export interface UserDataInterface {
 	termsAndConditionsConfirmation: string;
 	dataPrivacyConfirmation: string;
 	emailNotifications?: EmailNotificationsInterface;
-	initialEnquirySent?: boolean;
+	initialInquirySent?: boolean;
 }
 
 export interface ConsultantDataInterface
