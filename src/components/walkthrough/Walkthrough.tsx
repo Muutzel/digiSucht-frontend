@@ -11,6 +11,10 @@ import { WalkthroughConsultant } from './WalkthroughConsultant';
 export const Walkthrough = () => {
 	const { userData } = useContext(UserDataContext);
 
+	if (!userData?.userRoles) {
+		return null;
+	}
+
 	if (userData.userRoles.includes('user')) {
 		return <WalkthroughAdviceSeeker />;
 	} else if (userData.userRoles.includes('consultant')) {
