@@ -101,7 +101,7 @@ export const WalkthroughAdviceSeeker = () => {
 				console.log('Walkthrough exited');
 				console.log(userData.isWalkThroughEnabled);
 				apiPatchAdviceSeekerData({
-					walkThroughEnabled: !userData.isWalkThroughEnabled
+					walkThroughEnabled: false
 				})
 					.then(reloadUserData)
 					.catch(console.log);
