@@ -1,13 +1,13 @@
 import _ from 'lodash';
+
 import { AppConfigInterface } from '../../../globalState/interfaces';
+import { config as baseConfig, uiUrl } from '../../../resources/scripts/config';
 import de from '../i18n/overwrites/de/common.json';
-import deInformal from '../i18n/overwrites/de@informal/common.json';
 import deConsultingTypes from '../i18n/overwrites/de/consultingTypes.json';
+import deInformal from '../i18n/overwrites/de@informal/common.json';
 import deInformalConsultingTypes from '../i18n/overwrites/de@informal/consultingTypes.json';
 
-import { config as baseConfig, uiUrl } from '../../../resources/scripts/config';
-
-export { uiUrl, APP_PATH } from '../../../resources/scripts/config';
+export { APP_PATH, uiUrl } from '../../../resources/scripts/config';
 
 /*
  * routes
@@ -24,6 +24,7 @@ export const config: AppConfigInterface = {
 	..._.merge(baseConfig, {
 		budibaseSSO: true, // Feature flag to enable SSO on budibase
 		enableWalkthrough: true, // Feature flag to enable walkthrough
+		enableAdviceSeekerWalkThrough: true, // Feature flag to enable advice seeker walkthrough
 		disableVideoAppointments: true, // Feature flag to enable Video-Termine page
 		useTenantService: true,
 
