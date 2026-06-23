@@ -9,7 +9,9 @@ import {
 	ConsultingTypesContext,
 	RocketChatProvider,
 	InformalContext,
-	LocaleContext
+	LocaleContext,
+	NotificationsContext,
+	NOTIFICATION_TYPE_WARNING
 } from '../../globalState';
 import { apiGetConsultingTypes } from '../../api';
 import { Loading } from './Loading';
@@ -26,6 +28,7 @@ import { useJoinGroupChat } from '../../hooks/useJoinGroupChat';
 import { RocketChatUserStatusProvider } from '../../globalState/provider/RocketChatUserStatusProvider';
 import { useAppConfig } from '../../hooks/useAppConfig';
 import { E2EEncryptionSupportBanner } from '../E2EEncryptionSupportBanner/E2EEncryptionSupportBanner';
+import { useTranslation } from 'react-i18next';
 
 interface AuthenticatedAppProps {
 	onAppReady: Function;
@@ -42,6 +45,8 @@ export const AuthenticatedApp = ({
 	const { locale, setLocale } = useContext(LocaleContext);
 	const { setInformal } = useContext(InformalContext);
 	const { joinGroupChat } = useJoinGroupChat();
+	const { addNotification } = useContext(NotificationsContext);
+	const { t: translate } = useTranslation();
 
 	const [appReady, setAppReady] = useState<boolean>(false);
 	const [loading, setLoading] = useState<boolean>(true);
@@ -52,6 +57,21 @@ export const AuthenticatedApp = ({
 		const gcid = new URLSearchParams(window.location.search).get('gcid');
 		joinGroupChat(gcid);
 	}, [joinGroupChat]);
+
+	useEffect(() => {
+		const emailConflict = sessionStorage.getItem(
+			'registration_email_conflict'
+		);
+		if (emailConflict) {
+			sessionStorage.removeItem('registration_email_conflict');
+			addNotification({
+				notificationType: NOTIFICATION_TYPE_WARNING,
+				title: translate('registration.email.conflict.title'),
+				text: translate('registration.email.conflict.text'),
+				closeable: true
+			});
+		}
+	}, [addNotification]);
 
 	useEffect(() => {
 		if (

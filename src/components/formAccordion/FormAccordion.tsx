@@ -89,6 +89,7 @@ export const FormAccordion = ({
 
 	const [validity, setValidity] = useState({
 		username: VALIDITY_INITIAL,
+		email: VALIDITY_VALID, // optional — valid by default (empty)
 		password: VALIDITY_INITIAL,
 		state: additionalStepsData?.state?.isEnabled
 			? VALIDITY_INITIAL
@@ -172,8 +173,12 @@ export const FormAccordion = ({
 				<RegistrationUsername
 					isUsernameAlreadyInUse={isUsernameAlreadyInUse}
 					onUsernameChange={(username) => onChange({ username })}
+					onEmailChange={(email) => onChange({ email })}
 					onValidityChange={(validity) =>
 						handleValidity('username', validity)
+					}
+					onEmailValidityChange={(validity) =>
+						handleValidity('email', validity)
 					}
 					onKeyDown={handleKeyDown}
 				/>

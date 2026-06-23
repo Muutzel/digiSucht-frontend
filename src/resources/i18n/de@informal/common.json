@@ -656,6 +656,15 @@
 			"info3": {
 				"text": "Innerhalb von 2 Werktagen bekommst Du eine Antwort"
 			}
+		},
+		"email": {
+			"label": "E-Mail-Adresse (optional)",
+			"valid": "Deine E-Mail-Adresse ist gültig.",
+			"invalid": "Bitte gib eine gültige E-Mail-Adresse ein.",
+			"conflict": {
+				"title": "E-Mail-Adresse bereits vergeben",
+				"text": "Die eingegebene E-Mail-Adresse wird bereits von einem anderen Konto verwendet. Bitte hinterlege eine andere E-Mail-Adresse in deinem Profil."
+			}
 		}
 	},
 	"session": {

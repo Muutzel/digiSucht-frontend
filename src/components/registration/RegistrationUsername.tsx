@@ -6,12 +6,14 @@ import {
 	InputFieldLabelState
 } from '../inputField/InputField';
 import { ReactComponent as PersonIcon } from '../../resources/img/icons/person.svg';
+import { ReactComponent as EnvelopeIcon } from '../../resources/img/icons/envelope.svg';
 import {
 	AccordionItemValidity,
 	MIN_USERNAME_LENGTH,
 	VALIDITY_INITIAL,
 	VALIDITY_INVALID,
-	VALIDITY_VALID
+	VALIDITY_VALID,
+	isStringValidEmail
 } from './registrationHelpers';
 import { Text } from '../text/Text';
 import { useTranslation } from 'react-i18next';
@@ -19,14 +21,18 @@ import { useTranslation } from 'react-i18next';
 interface RegistrationUsernameProps {
 	isUsernameAlreadyInUse: boolean;
 	onUsernameChange: Function;
+	onEmailChange: Function;
 	onValidityChange: Function;
+	onEmailValidityChange: Function;
 	onKeyDown?: Function;
 }
 
 export const RegistrationUsername = ({
 	isUsernameAlreadyInUse,
 	onUsernameChange,
+	onEmailChange,
 	onValidityChange,
+	onEmailValidityChange,
 	onKeyDown
 }: RegistrationUsernameProps) => {
 	const { t: translate } = useTranslation();
@@ -35,6 +41,11 @@ export const RegistrationUsername = ({
 		useState<AccordionItemValidity>(VALIDITY_INITIAL);
 	const [labelContent, setLabelContent] = useState<string>(null);
 	const [labelState, setLabelState] = useState<InputFieldLabelState>(null);
+
+	const [email, setEmail] = useState<string>('');
+	const [emailLabelContent, setEmailLabelContent] = useState<string>(null);
+	const [emailLabelState, setEmailLabelState] =
+		useState<InputFieldLabelState>(null);
 
 	useEffect(() => {
 		if (isUsernameAlreadyInUse) {
@@ -47,6 +58,10 @@ export const RegistrationUsername = ({
 	useEffect(() => {
 		onUsernameChange(username);
 	}, [username]); // eslint-disable-line react-hooks/exhaustive-deps
+
+	useEffect(() => {
+		onEmailChange(email);
+	}, [email]); // eslint-disable-line react-hooks/exhaustive-deps
 
 	useEffect(() => {
 		onValidityChange(isValid);
@@ -65,9 +80,26 @@ export const RegistrationUsername = ({
 		...(labelState && { labelState: labelState })
 	};
 
+	const inputItemEmail: InputFieldItem = {
+		content: email,
+		icon: <EnvelopeIcon />,
+		id: 'email',
+		label: emailLabelContent
+			? `${emailLabelContent}`
+			: translate('registration.email.label'),
+		name: 'email',
+		type: 'text',
+		...(emailLabelState && { labelState: emailLabelState })
+	};
+
 	const handleUsernameChange = (event) => {
 		validateUsername(event.target.value);
 		setUsername(event.target.value);
+	};
+
+	const handleEmailChange = (event) => {
+		validateEmail(event.target.value);
+		setEmail(event.target.value);
 	};
 
 	const validateUsername = (username) => {
@@ -86,6 +118,23 @@ export const RegistrationUsername = ({
 		}
 	};
 
+	const validateEmail = (value: string) => {
+		if (value.length === 0) {
+			// optional field — empty is fine
+			setEmailLabelState(null);
+			setEmailLabelContent(null);
+			onEmailValidityChange(VALIDITY_VALID);
+		} else if (isStringValidEmail(value)) {
+			setEmailLabelState(VALIDITY_VALID);
+			setEmailLabelContent(translate('registration.email.valid'));
+			onEmailValidityChange(VALIDITY_VALID);
+		} else {
+			setEmailLabelState(VALIDITY_INVALID);
+			setEmailLabelContent(translate('registration.email.invalid'));
+			onEmailValidityChange(VALIDITY_INVALID);
+		}
+	};
+
 	return (
 		<div>
 			<Text
@@ -96,6 +145,11 @@ export const RegistrationUsername = ({
 			<InputField
 				item={inputItemUsername}
 				inputHandle={handleUsernameChange}
+				onKeyDown={onKeyDown}
+			/>
+			<InputField
+				item={inputItemEmail}
+				inputHandle={handleEmailChange}
 				onKeyDown={onKeyDown}
 			/>
 		</div>

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useState, useEffect, useCallback, useContext } from 'react';
 import { BUTTON_TYPES } from '../button/Button';
-import { apiPostRegistration, FETCH_ERRORS, X_REASON } from '../../api';
+import { apiPostRegistration, apiPutEmail, FETCH_ERRORS, X_REASON } from '../../api';
 import { endpoints } from '../../resources/scripts/endpoints';
 import { Overlay, OVERLAY_FUNCTIONS, OverlayItem } from '../overlay/Overlay';
 import { redirectToApp } from './autoLogin';
@@ -35,6 +35,7 @@ import { apiPostError, ERROR_LEVEL_ERROR } from '../../api/apiPostError';
 
 export interface FormAccordionData {
 	username?: string;
+	email?: string;
 	password?: string;
 	agency?: AgencyDataInterface;
 	consultingType?: ConsultingTypeInterface;
@@ -206,6 +207,24 @@ export const RegistrationForm = () => {
 			settings.multitenancyWithSingleDomainEnabled,
 			tenant
 		)
+			.then(() => {
+				if (formAccordionData.email) {
+					return apiPutEmail(formAccordionData.email).catch(
+						(emailError) => {
+							if (emailError.status === 409) {
+								sessionStorage.setItem(
+									'registration_email_conflict',
+									'true'
+								);
+								// continue — user is registered and logged in,
+								// the conflict notification will show in the app
+								return;
+							}
+							throw emailError;
+						}
+					);
+				}
+			})
 			.then(() => setOverlayActive(true))
 			.catch((errorRes) => {
 				if (

@@ -1917,6 +1917,15 @@
 				"helperText": "Not registered yet?"
 			},
 			"subline": "How does Caritas Counseling & Assistance work?"
+		},
+		"email": {
+			"label": "Email address (optional)",
+			"valid": "Email address is valid.",
+			"invalid": "Please enter a valid email address.",
+			"conflict": {
+				"title": "Email address already in use",
+				"text": "The email address you entered is already associated with another account. Please add a different email address in your profile."
+			}
 		}
 	},
 	"releaseNote": {

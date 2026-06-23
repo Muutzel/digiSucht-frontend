@@ -1942,6 +1942,15 @@
 				"helperText": "Noch nicht registriert?"
 			},
 			"subline": "Wie läuft die Beratung ab?"
+		},
+		"email": {
+			"label": "E-Mail-Adresse (optional)",
+			"valid": "E-Mail-Adresse ist gültig.",
+			"invalid": "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
+			"conflict": {
+				"title": "E-Mail-Adresse bereits vergeben",
+				"text": "Die eingegebene E-Mail-Adresse wird bereits von einem anderen Konto verwendet. Bitte hinterlegen Sie eine andere E-Mail-Adresse in Ihrem Profil."
+			}
 		}
 	},
 	"releaseNote": {
