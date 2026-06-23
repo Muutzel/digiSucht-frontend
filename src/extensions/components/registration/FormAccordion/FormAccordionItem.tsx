@@ -10,6 +10,7 @@ import {
 import { InvalidIcon } from '../../../../resources/img/icons';
 import { FormAccordionChildProps } from './FormAccordion';
 import classNames from 'classnames';
+import { useRegistrationSubmit } from './RegistrationSubmitContext';
 
 export interface FormAccordionItemProps {
 	id?: string;
@@ -37,6 +38,7 @@ export const FormAccordionItem: FC<
 	disableNextButton
 }) => {
 	const formContext = React.useContext(FieldContext);
+	const { submitted } = useRegistrationSubmit();
 	const fieldsToCheck = [...formFields, ...errorOnTouchExtraFields];
 
 	const isFieldsInValid = formContext
@@ -44,7 +46,7 @@ export const FormAccordionItem: FC<
 		.some((error) => error.errors.length !== 0);
 
 	const isValid = !(
-		formContext.isFieldsTouched(fieldsToCheck) && isFieldsInValid
+		(submitted || formContext.isFieldsTouched(fieldsToCheck)) && isFieldsInValid
 	);
 
 	const { t: translate } = useTranslation();

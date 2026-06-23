@@ -31,6 +31,7 @@ import LegalLinks from '../../../components/legalLinks/LegalLinks';
 import { FormAccordion } from './FormAccordion/FormAccordion';
 import { FormAccordionItem } from './FormAccordion/FormAccordionItem';
 import { UrlParamsContext } from '../../../globalState/provider/UrlParamsProvider';
+import { RegistrationSubmitProvider, useRegistrationSubmit } from './FormAccordion/RegistrationSubmitContext';
 
 enum CounsellingRelation {
 	Self = 'SELF_COUNSELLING',
@@ -58,7 +59,7 @@ interface FormData {
 	'counsellingRelation': CounsellingRelation;
 }
 
-export const RegistrationForm = () => {
+const RegistrationFormInner = () => {
 	const { tenant } = useContext(TenantContext);
 	const settings = useAppConfig();
 	const [form] = Form.useForm();
@@ -70,6 +71,8 @@ export const RegistrationForm = () => {
 	const [registrationWithSuccess, setRegistrationWithSuccess] =
 		useState(false);
 	const [isUsernameAlreadyInUse, setIsUsernameAlreadyInUse] = useState(false);
+	const [isSubmitting, setIsSubmitting] = useState(false);
+	const { setSubmitted } = useRegistrationSubmit();
 	const { featureToolsEnabled } = getTenantSettings();
 	const { t: translate } = useTranslation();
 	const legalLinks = useContext(LegalLinksContext);
@@ -187,6 +190,8 @@ export const RegistrationForm = () => {
 					? getValidRef(urlQuery.get('ref'))
 					: null
 			};
+			setIsSubmitting(true);
+			setSubmitted(true);
 			apiPostRegistration(
 				endpoints.registerAsker,
 				finalValues,
@@ -195,6 +200,7 @@ export const RegistrationForm = () => {
 			)
 				.then(() => setRegistrationWithSuccess(true))
 				.catch((errorRes) => {
+					setIsSubmitting(false);
 					if (
 						errorRes.status === 409 &&
 						errorRes.headers?.get(FETCH_ERRORS.X_REASON) ===
@@ -540,7 +546,7 @@ export const RegistrationForm = () => {
 				</div>
 
 				<Button
-					disabled={!valid}
+					disabled={!valid || isSubmitting}
 					className="registrationFormDigi__Submit"
 					buttonHandle={() => form.submit()}
 					item={buttonItemSubmit}
@@ -551,3 +557,9 @@ export const RegistrationForm = () => {
 		</>
 	);
 };
+
+export const RegistrationForm = () => (
+	<RegistrationSubmitProvider>
+		<RegistrationFormInner />
+	</RegistrationSubmitProvider>
+);
