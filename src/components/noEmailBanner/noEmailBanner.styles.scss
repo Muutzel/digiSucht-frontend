@@ -1,0 +1,39 @@
+.no-email-banner {
+	background-color: #e6f1fb;
+	color: #0c447c;
+	display: flex;
+	justify-content: center;
+	padding: $grid-base-two $grid-base-three;
+
+	@include breakpoint($fromLarge) {
+		padding: $grid-base-two 96px $grid-base-two $grid-base-eight;
+	}
+
+	p {
+		margin: 0;
+		padding-right: $grid-base-four;
+
+		@include breakpoint($fromLarge) {
+			padding: 0;
+		}
+	}
+
+	a {
+		color: #0c447c;
+		text-decoration: underline;
+
+		&:hover {
+			color: #185fa5;
+		}
+	}
+
+	button.close {
+		svg path {
+			fill: #0c447c;
+		}
+
+		&:hover svg path {
+			fill: #042c53;
+		}
+	}
+}

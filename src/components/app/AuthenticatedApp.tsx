@@ -28,6 +28,7 @@ import { useJoinGroupChat } from '../../hooks/useJoinGroupChat';
 import { RocketChatUserStatusProvider } from '../../globalState/provider/RocketChatUserStatusProvider';
 import { useAppConfig } from '../../hooks/useAppConfig';
 import { E2EEncryptionSupportBanner } from '../E2EEncryptionSupportBanner/E2EEncryptionSupportBanner';
+import { NoEmailBanner } from '../noEmailBanner/NoEmailBanner';
 import { useTranslation } from 'react-i18next';
 
 interface AuthenticatedAppProps {
@@ -140,6 +141,7 @@ export const AuthenticatedApp = ({
 								<RocketChatUnreadProvider>
 									<RocketChatUserStatusProvider>
 										<E2EEncryptionSupportBanner />
+										<NoEmailBanner />
 										<Routing logout={handleLogout} />
 									</RocketChatUserStatusProvider>
 								</RocketChatUnreadProvider>

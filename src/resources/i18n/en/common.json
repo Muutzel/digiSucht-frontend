@@ -2733,5 +2733,9 @@
 				"title": "My Appointments"
 			}
 		}
+	},
+	"noEmailBanner": {
+		"profileLink": "Add your email address",
+		"text": "to be able to reset your password."
 	}
 }

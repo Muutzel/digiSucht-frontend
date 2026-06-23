@@ -1015,5 +1015,9 @@
 				"intro": "Hier kannst du Termine mit deiner Beraterin oder deinem Berater buchen, verschieben oder absagen."
 			}
 		}
+	},
+	"noEmailBanner": {
+		"profileLink": "E-Mail-Adresse hinzufügen",
+		"text": "um dein Passwort zurücksetzen zu können."
 	}
 }

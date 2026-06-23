@@ -2753,5 +2753,9 @@
 				"title": "Meine Termine"
 			}
 		}
+	},
+	"noEmailBanner": {
+		"profileLink": "E-Mail-Adresse hinzufügen",
+		"text": "um Ihr Passwort zurücksetzen zu können."
 	}
 }
