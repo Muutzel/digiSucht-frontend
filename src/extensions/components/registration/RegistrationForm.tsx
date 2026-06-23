@@ -32,6 +32,7 @@ import { FormAccordion } from './FormAccordion/FormAccordion';
 import { FormAccordionItem } from './FormAccordion/FormAccordionItem';
 import { UrlParamsContext } from '../../../globalState/provider/UrlParamsProvider';
 import { RegistrationSubmitProvider, useRegistrationSubmit } from './FormAccordion/RegistrationSubmitContext';
+import { RegistrationLoadingOverlay } from './RegistrationLoadingOverlay';
 
 enum CounsellingRelation {
 	Self = 'SELF_COUNSELLING',
@@ -553,6 +554,7 @@ const RegistrationFormInner = () => {
 				/>
 			</Form>
 
+			{isSubmitting && <RegistrationLoadingOverlay />}
 			{registrationWithSuccess && <RegistrationSuccessOverlay />}
 		</>
 	);
