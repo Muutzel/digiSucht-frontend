@@ -1926,7 +1926,8 @@
 				"title": "Email address already in use",
 				"text": "The email address you entered is already associated with another account. Please add a different email address in your profile."
 			}
-		}
+		},
+		"submitHint": "Please check your information. The highlighted fields show which entries are incomplete or incorrect."
 	},
 	"releaseNote": {
 		"content": {

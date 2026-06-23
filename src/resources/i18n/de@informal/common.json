@@ -665,7 +665,8 @@
 				"title": "E-Mail-Adresse bereits vergeben",
 				"text": "Die eingegebene E-Mail-Adresse wird bereits von einem anderen Konto verwendet. Bitte hinterlege eine andere E-Mail-Adresse in deinem Profil."
 			}
-		}
+		},
+		"submitHint": "Bitte überprüfe deine Angaben. Die markierten Felder zeigen, welche Eingaben noch unvollständig oder fehlerhaft sind."
 	},
 	"session": {
 		"acceptance": {

@@ -50,7 +50,12 @@ export const RegistrationPassword = ({
 	const [passwordConfirmationLabelState, setPasswordConfirmationLabelState] =
 		useState<InputFieldLabelState>(null);
 
+	const [passwordTouched, setPasswordTouched] = useState<boolean>(false);
+	const [passwordConfirmationTouched, setPasswordConfirmationTouched] =
+		useState<boolean>(false);
+
 	useEffect(() => {
+		if (!passwordTouched) return;
 		if (passwordCriteriaValidation) {
 			const areAllCriteriaValid = Object.values(
 				passwordCriteriaValidation
@@ -67,9 +72,10 @@ export const RegistrationPassword = ({
 				setPasswordLabel(null);
 			}
 		}
-	}, [passwordCriteriaValidation, password, translate]);
+	}, [passwordCriteriaValidation, password, passwordTouched, translate]);
 
 	useEffect(() => {
+		if (!passwordConfirmationTouched) return;
 		let passwordFits = inputValuesFit(passwordConfirmation, password);
 		if (passwordConfirmation.length >= 1 && !passwordFits) {
 			setPasswordConfirmationLabelState(VALIDITY_INVALID);
@@ -85,7 +91,7 @@ export const RegistrationPassword = ({
 			setPasswordConfirmationLabelState(null);
 			setPasswordConfirmationLabel(null);
 		}
-	}, [passwordConfirmation, password, translate]);
+	}, [passwordConfirmation, password, passwordConfirmationTouched, translate]);
 
 	useEffect(() => {
 		onValidityChange(isValid);
@@ -139,6 +145,14 @@ export const RegistrationPassword = ({
 			validatePasswordCriteria(event.target.value)
 		);
 		setPassword(event.target.value);
+	};
+
+	const handlePasswordBlur = () => {
+		setPasswordTouched(true);
+	};
+
+	const handlePasswordConfirmationBlur = () => {
+		setPasswordConfirmationTouched(true);
 	};
 
 	const passwordCriteria = [
@@ -200,11 +214,13 @@ export const RegistrationPassword = ({
 			<InputField
 				item={inputItemPassword}
 				inputHandle={handlepasswordChange}
+				onBlur={handlePasswordBlur}
 				onKeyDown={(e) => onKeyDown(e, false)}
 			/>
 			<InputField
 				item={inputItemPasswordConfirmation}
 				inputHandle={(e) => setPasswordConfirmation(e.target.value)}
+				onBlur={handlePasswordConfirmationBlur}
 				onKeyDown={(e) => onKeyDown(e, true, false)}
 			/>
 			{passwordNote && (

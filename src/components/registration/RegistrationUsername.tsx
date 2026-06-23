@@ -93,13 +93,19 @@ export const RegistrationUsername = ({
 	};
 
 	const handleUsernameChange = (event) => {
-		validateUsername(event.target.value);
 		setUsername(event.target.value);
 	};
 
+	const handleUsernameBlur = (event) => {
+		validateUsername(event.target.value);
+	};
+
 	const handleEmailChange = (event) => {
-		validateEmail(event.target.value);
 		setEmail(event.target.value);
+	};
+
+	const handleEmailBlur = (event) => {
+		validateEmail(event.target.value);
 	};
 
 	const validateUsername = (username) => {
@@ -145,11 +151,13 @@ export const RegistrationUsername = ({
 			<InputField
 				item={inputItemUsername}
 				inputHandle={handleUsernameChange}
+				onBlur={handleUsernameBlur}
 				onKeyDown={onKeyDown}
 			/>
 			<InputField
 				item={inputItemEmail}
 				inputHandle={handleEmailChange}
+				onBlur={handleEmailBlur}
 				onKeyDown={onKeyDown}
 			/>
 		</div>

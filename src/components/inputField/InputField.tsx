@@ -33,6 +33,7 @@ export interface InputFieldProps {
 	inputHandle: Function;
 	keyUpHandle?: Function;
 	onKeyDown?: Function;
+	onBlur?: Function;
 }
 
 export interface GeneratedInputs {
@@ -95,6 +96,7 @@ export const InputField = (props: InputFieldProps) => {
 				autoComplete="off"
 				onKeyUp={handleKeyUp}
 				onKeyDown={(e) => (props.onKeyDown ? props.onKeyDown(e) : null)}
+				onBlur={(e) => (props.onBlur ? props.onBlur(e) : null)}
 				tabIndex={inputItem.tabIndex}
 			/>
 			<label className="inputField__label" htmlFor={inputItem.id}>

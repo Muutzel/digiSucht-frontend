@@ -1951,7 +1951,8 @@
 				"title": "E-Mail-Adresse bereits vergeben",
 				"text": "Die eingegebene E-Mail-Adresse wird bereits von einem anderen Konto verwendet. Bitte hinterlegen Sie eine andere E-Mail-Adresse in Ihrem Profil."
 			}
-		}
+		},
+		"submitHint": "Bitte überprüfen Sie Ihre Angaben. Die markierten Felder zeigen, welche Eingaben noch unvollständig oder fehlerhaft sind."
 	},
 	"releaseNote": {
 		"content": {

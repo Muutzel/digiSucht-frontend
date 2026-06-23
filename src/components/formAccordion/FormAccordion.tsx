@@ -74,6 +74,7 @@ export const FormAccordion = ({
 	const { consultingTypes } = useConsultantRegistrationData({});
 
 	const [activeItem, setActiveItem] = useState<number>(1);
+	const [hasSubmitAttempted, setHasSubmitAttempted] = useState<boolean>(false);
 
 	const topicsAreRequired = useMemo(
 		() =>
@@ -364,12 +365,26 @@ export const FormAccordion = ({
 				<FormAccordionRegistrationText
 					agency={formAccordionData.agency}
 				/>
-				<Button
-					className="registrationForm__submit"
-					item={buttonItemSubmit}
-					buttonHandle={handleSubmitButtonClick}
-					disabled={isSubmitButtonDisabled}
-				/>
+				{/* Wrapper captures clicks even when button is disabled */}
+				<div
+					onClick={() => {
+						if (isSubmitButtonDisabled) {
+							setHasSubmitAttempted(true);
+						}
+					}}
+				>
+					<Button
+						className="registrationForm__submit"
+						item={buttonItemSubmit}
+						buttonHandle={handleSubmitButtonClick}
+						disabled={isSubmitButtonDisabled}
+					/>
+				</div>
+				{hasSubmitAttempted && isSubmitButtonDisabled && (
+					<p className="registrationForm__submitHint">
+						{translate('registration.submitHint')}
+					</p>
+				)}
 			</div>
 		),
 		isValid: validity.dataProtection
