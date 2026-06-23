@@ -66,6 +66,7 @@ import { budibaseLogout } from '../budibase/budibaseLogout';
 import { GlobalComponentContext } from '../../globalState/provider/GlobalComponentContext';
 import { useConsultantRegistrationData } from '../../containers/registration/hooks/useConsultantRegistrationData';
 import { UrlParamsContext } from '../../globalState/provider/UrlParamsProvider';
+import { LoginLoadingOverlay } from '../../extensions/components/registration/RegistrationLoadingOverlay';
 
 const regexAccountDeletedError = /account disabled/i;
 
@@ -588,6 +589,7 @@ export const Login = () => {
 					/>
 				)}
 			</StageLayout>
+			{isRequestInProgress && <LoginLoadingOverlay />}
 			{pwResetOverlayActive && (
 				<Overlay
 					item={pwResetOverlay}

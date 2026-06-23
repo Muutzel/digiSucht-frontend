@@ -2,25 +2,37 @@ import * as React from 'react';
 import { useEffect, useState } from 'react';
 import './registrationLoadingOverlay.styles.scss';
 
-const LOADING_TEXTS = [
-	'Ihr Konto wird erstellt …',
-	'Die Kontoerstellung kann einen Moment dauern…',
-	'Einen Moment bitte…',
-	'Gleich geht’s weiter…',
-	'Sie werden gleich weitergeleitet…'
+const REGISTRATION_TEXTS = [
+	‘Ihr Konto wird erstellt …’,
+	‘Die Kontoerstellung kann einen Moment dauern…’,
+	‘Einen Moment bitte…’,
+	‘Gleich geht’s weiter…’,
+	‘Sie werden gleich weitergeleitet…’
+];
+
+const LOGIN_TEXTS = [
+	‘Ihre Daten werden geprüft…’,
+	‘Sie werden angemeldet…’,
+	‘Die Anmeldung kann einen Moment dauern…’,
+	‘Einen Moment bitte…’,
+	‘Gleich geht’s weiter…’
 ];
 
 const INTERVAL_MS = 5000;
 
-export const RegistrationLoadingOverlay = () => {
+interface LoadingOverlayProps {
+	texts: string[];
+}
+
+const LoadingOverlay = ({ texts }: LoadingOverlayProps) => {
 	const [textIndex, setTextIndex] = useState(0);
 
 	useEffect(() => {
 		const timer = setInterval(() => {
-			setTextIndex((i) => (i + 1) % LOADING_TEXTS.length);
+			setTextIndex((i) => (i + 1) % texts.length);
 		}, INTERVAL_MS);
 		return () => clearInterval(timer);
-	}, []);
+	}, [texts]);
 
 	return (
 		<div className="registrationLoadingOverlay">
@@ -30,9 +42,17 @@ export const RegistrationLoadingOverlay = () => {
 					aria-hidden="true"
 				/>
 				<p className="registrationLoadingOverlay__text">
-					{LOADING_TEXTS[textIndex]}
+					{texts[textIndex]}
 				</p>
 			</div>
 		</div>
 	);
 };
+
+export const RegistrationLoadingOverlay = () => (
+	<LoadingOverlay texts={REGISTRATION_TEXTS} />
+);
+
+export const LoginLoadingOverlay = () => (
+	<LoadingOverlay texts={LOGIN_TEXTS} />
+);
