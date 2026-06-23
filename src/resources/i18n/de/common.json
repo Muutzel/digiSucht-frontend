@@ -1211,6 +1211,9 @@
 				"unauthorized": {
 					"otp": "Ihre Zugangsdaten sind nicht korrekt. Bitte versuchen Sie es erneut.",
 					"text": "Falsche Zugangsdaten oder temporäre Sperre wegen mehrfacher Fehlversuche (15 Min.). Bitte versuchen Sie es (später) erneut."
+				},
+				"helpLink": {
+					"label": "Hilfe zur Nutzung der Plattform"
 				}
 			}
 		}
@@ -2758,5 +2761,10 @@
 	"noEmailBanner": {
 		"profileLink": "E-Mail-Adresse hinzufügen",
 		"text": "um Ihr Passwort zurücksetzen zu können."
+	},
+	"stageLayout": {
+		"helpLink": {
+			"label": "Hilfe zur Nutzung der Plattform"
+		}
 	}
 }

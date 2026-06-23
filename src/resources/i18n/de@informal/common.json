@@ -1020,5 +1020,19 @@
 	"noEmailBanner": {
 		"profileLink": "E-Mail-Adresse hinzufügen",
 		"text": "um dein Passwort zurücksetzen zu können."
+	},
+	"login": {
+		"warning": {
+			"failed": {
+				"helpLink": {
+					"label": "Hilfe zur Nutzung der Plattform"
+				}
+			}
+		}
+	},
+	"stageLayout": {
+		"helpLink": {
+			"label": "Hilfe zur Nutzung der Plattform"
+		}
 	}
 }

@@ -132,6 +132,23 @@ export const StageLayout = ({
 								</button>
 							)}
 						</LegalLinks>
+						<Text
+							type="infoSmall"
+							className="stageLayout__legalLinksSeparator"
+							text=" | "
+						/>
+						<a
+							href="https://www.suchtberatung.digital/ueber-digisucht-faq/#hilfe_nutzung"
+							target="_blank"
+							rel="noreferrer"
+							className="stageLayout__helpLink"
+						>
+							<Text
+								className="stageLayout__legalLinksItem"
+								type="infoSmall"
+								text={translate('stageLayout.helpLink.label')}
+							/>
+						</a>
 					</div>
 				)}
 			</div>

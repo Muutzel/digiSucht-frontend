@@ -1203,6 +1203,9 @@
 				"unauthorized": {
 					"otp": "Your access data is not correct. Please try again.",
 					"text": "Username or password are not correct. Please try again."
+				},
+				"helpLink": {
+					"label": "Help with using the platform"
 				}
 			}
 		}
@@ -2738,5 +2741,10 @@
 	"noEmailBanner": {
 		"profileLink": "Add your email address",
 		"text": "to be able to reset your password."
+	},
+	"stageLayout": {
+		"helpLink": {
+			"label": "Help with using the platform"
+		}
 	}
 }

@@ -530,11 +530,19 @@ export const Login = () => {
 						</div>
 
 						{showLoginError && (
-							<Text
-								text={showLoginError}
-								type="infoSmall"
-								className="loginForm__error"
-							/>
+							<div className="loginForm__error">
+								<p>
+									{showLoginError}{' '}
+									<a
+										href="https://www.suchtberatung.digital/ueber-digisucht-faq/#hilfe_nutzung"
+										target="_blank"
+										rel="noreferrer"
+										className="loginForm__error__helpLink"
+									>
+										{translate('login.warning.failed.helpLink.label')}
+									</a>
+								</p>
+							</div>
 						)}
 
 						<Button
