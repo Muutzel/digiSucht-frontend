@@ -137,7 +137,7 @@ export const RegistrationForm = () => {
 	};
 	const urlQuery: URLSearchParams = useQuery();
 
-	// Only max. 8 alphanumeric characters are allowed in the ref parameter
+	// Only max. 8 alphanumeric characters are allowed in the ref parameters
 	const getValidRef = (ref: string) =>
 		ref.replace(/[^a-zA-Z0-9]/g, '').substring(0, 8);
 
