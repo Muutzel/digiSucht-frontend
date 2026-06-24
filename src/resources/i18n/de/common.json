@@ -617,8 +617,10 @@
 				"headline": "Ups!"
 			},
 			"401": {
-				"description": "Leider sind Sie nicht berechtigt diese Seite einzusehen.",
-				"headline": "Schade!"
+				"description": "Bitte prüfen Sie, ob Sie die richtige Anmeldeseite verwenden. Für unterschiedliche Rollen gibt es unterschiedliche Anmeldeseiten.",
+				"headline": "Login leider nicht möglich",
+				"linkAdmin": "Zum Login für Admins (Landeskoordinierungsstellen)",
+				"linkUser": "Zum Login für Berater:innen und Ratsuchende"
 			},
 			"404": {
 				"description": "Es tut uns leid, da ist wohl etwas schiefgelaufen.<br>Wir konnten die gewünschte Seite nicht finden.",

@@ -154,6 +154,24 @@ $error-page-background: rgba($form-medium, 0.08) !default;
 		margin-top: 25px;
 	}
 
+	&__links {
+		display: flex;
+		flex-direction: column;
+		gap: $grid-base-two;
+		margin-top: 25px;
+	}
+
+	&__link {
+		font-size: $font-size-primary;
+		font-weight: $font-weight-medium;
+		text-decoration: underline;
+		color: $link-color;
+
+		&:hover {
+			color: $link-color-hover;
+		}
+	}
+
 	h2 {
 		font-size: $font-size-h3;
 		font-weight: $font-weight-medium;

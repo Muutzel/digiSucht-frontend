@@ -99,7 +99,22 @@ export const ErrorContent = () => {
 							Ref: {correlationId}
 						</div>
 					)}
-					{statusCode !== '400' && (
+					{statusCode === '401' ? (
+						<div className="errorPage__links">
+							<a
+								href="https://app.suchtberatung.digital/admin/loginapp"
+								className="errorPage__link"
+							>
+								{translate('error.statusCodes.401.linkAdmin')}
+							</a>
+							<a
+								href="https://app.suchtberatung.digital/login"
+								className="errorPage__link"
+							>
+								{translate('error.statusCodes.401.linkUser')}
+							</a>
+						</div>
+					) : statusCode !== '400' && (
 						<Button
 							className="errorPage__button"
 							buttonHandle={buttonHandle}

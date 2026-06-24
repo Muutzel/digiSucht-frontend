@@ -195,7 +195,10 @@
 				"description": "Die von Dir eingegebene URL ist ungültig."
 			},
 			"401": {
-				"description": "Leider bist Du nicht berechtigt diese Seite einzusehen."
+				"description": "Bitte prüfe, ob du die richtige Anmeldeseite verwendest. Für unterschiedliche Rollen gibt es unterschiedliche Anmeldeseiten.",
+				"headline": "Login leider nicht möglich",
+				"linkAdmin": "Zum Login für Admins (Landeskoordinierungsstellen)",
+				"linkUser": "Zum Login für Berater:innen und Ratsuchende"
 			},
 			"500": {
 				"description": "Wie es aussieht, haben wir momentan ein Serverproblem.<br>Versuche es später noch einmal."
