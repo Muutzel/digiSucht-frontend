@@ -18,6 +18,7 @@ import { AgencySelectionFormField } from './AgencyFields';
 import { InputFormField } from './InputFormField';
 import { CheckboxFormField } from './CheckboxFormField';
 import { RegistrationSuccessOverlay } from './RegistrationSuccessOverlay';
+import { RegistrationErrorOverlay } from './RegistrationErrorOverlay';
 import { InfoTooltip } from '../../../components/infoTooltip/InfoTooltip';
 import { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { useAppConfig } from '../../../hooks/useAppConfig';
@@ -73,6 +74,7 @@ const RegistrationFormInner = () => {
 		useState(false);
 	const [isUsernameAlreadyInUse, setIsUsernameAlreadyInUse] = useState(false);
 	const [isSubmitting, setIsSubmitting] = useState(false);
+	const [registrationWithError, setRegistrationWithError] = useState(false);
 	const { setSubmitted } = useRegistrationSubmit();
 	const { featureToolsEnabled } = getTenantSettings();
 	const { t: translate } = useTranslation();
@@ -214,6 +216,8 @@ const RegistrationFormInner = () => {
 							}
 						]);
 						setIsUsernameAlreadyInUse(true);
+					} else {
+						setRegistrationWithError(true);
 					}
 				});
 		},
@@ -556,6 +560,7 @@ const RegistrationFormInner = () => {
 
 			{isSubmitting && <RegistrationLoadingOverlay />}
 			{registrationWithSuccess && <RegistrationSuccessOverlay />}
+			{registrationWithError && <RegistrationErrorOverlay />}
 		</>
 	);
 };

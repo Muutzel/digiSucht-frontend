@@ -636,6 +636,11 @@
 		"overlay": {
 			"success": {
 				"copy": "Du hast Dich erfolgreich registriert."
+			},
+			"error": {
+				"headline": "Leider ist ein Problem aufgetreten.",
+				"copy": "Versuche gerne noch einmal, dich einzuloggen.",
+				"button": "Zum Login"
 			}
 		},
 		"password": {
