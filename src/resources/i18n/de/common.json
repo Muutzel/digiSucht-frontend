@@ -599,7 +599,8 @@
 						"peer": "Nachricht an Teamleiter_in schreiben"
 					},
 					"groupChat": "Nachricht schreiben"
-				}
+				},
+				"unencryptedHint": "Hinweis: Ihre Nachricht wird mit Absenden Ihrer Nachricht verschlüsselt."
 			},
 			"overlay": {
 				"button": "Zur Nachricht",

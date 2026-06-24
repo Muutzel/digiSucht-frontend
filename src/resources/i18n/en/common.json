@@ -589,7 +589,8 @@
 						"peer": "Send a message to Teamleader"
 					},
 					"groupChat": "Write message"
-				}
+				},
+				"unencryptedHint": "Note: Your message will be encrypted when you send it."
 			},
 			"overlay": {
 				"button": "Go to the message",

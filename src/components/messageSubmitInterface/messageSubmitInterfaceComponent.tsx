@@ -200,6 +200,7 @@ export const MessageSubmitInterfaceComponent = ({
 	const [requestFeedbackCheckboxChecked, setRequestFeedbackCheckboxChecked] =
 		useState(false);
 	const [showAppointmentButton, setShowAppointmentButton] = useState(false);
+	const [enquiryHintShown, setEnquiryHintShown] = useState(false);
 
 	//Emoji Picker Plugin
 	const emojiPlugin = useMemo(
@@ -1017,7 +1018,12 @@ export const MessageSubmitInterfaceComponent = ({
 									className="textarea__input"
 									ref={textareaInputRef}
 									onKeyUp={() => resizeTextarea()}
-									onFocus={toggleAbsentMessage}
+									onFocus={(e) => {
+										toggleAbsentMessage(e);
+										if (activeSession.isEmptyEnquiry) {
+											setEnquiryHintShown(true);
+										}
+									}}
 									onBlur={toggleAbsentMessage}
 								>
 									<Toolbar>
@@ -1133,6 +1139,11 @@ export const MessageSubmitInterfaceComponent = ({
 								/>
 							</div>
 						</div>
+						{activeSession.isEmptyEnquiry && enquiryHintShown && (
+							<p className="textarea__enquiryHint">
+								{translate('enquiry.write.input.unencryptedHint')}
+							</p>
+						)}
 						{showAppointmentButton && (
 							<div className="textarea__wrapper-booking">
 								<Headline

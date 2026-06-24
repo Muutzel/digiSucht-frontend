@@ -180,7 +180,8 @@
 			"input": {
 				"placeholder": {
 					"asker": "Schreibe uns, was Dich bewegt."
-				}
+				},
+				"unencryptedHint": "Hinweis: Deine Nachricht wird mit Absenden deiner Nachricht verschlüsselt."
 			},
 			"overlay": {
 				"copy": "Innerhalb von 2 Werktagen erhältst Du eine Antwort von uns.",

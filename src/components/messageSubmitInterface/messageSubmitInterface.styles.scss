@@ -481,4 +481,11 @@ $inputBoxShadow: inset 0 2px 0 0 $message-submit-interface-textarea-shadow-color
 			padding: 14px $grid-base-five 14px $grid-base;
 		}
 	}
+
+	.textarea__enquiryHint {
+		font-size: 12px;
+		color: $message-submit-interface-textarea-placeholder-color;
+		margin: $grid-base-half $grid-base-two 0;
+		padding: 0;
+	}
 }
