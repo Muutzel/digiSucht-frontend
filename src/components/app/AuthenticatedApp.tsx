@@ -30,6 +30,7 @@ import { useAppConfig } from '../../hooks/useAppConfig';
 import { E2EEncryptionSupportBanner } from '../E2EEncryptionSupportBanner/E2EEncryptionSupportBanner';
 import { NoEmailBanner } from '../noEmailBanner/NoEmailBanner';
 import { useTranslation } from 'react-i18next';
+import { LogoutLoadingOverlay } from '../../extensions/components/registration/RegistrationLoadingOverlay';
 
 interface AuthenticatedAppProps {
 	onAppReady: Function;
@@ -52,6 +53,7 @@ export const AuthenticatedApp = ({
 	const [appReady, setAppReady] = useState<boolean>(false);
 	const [loading, setLoading] = useState<boolean>(true);
 	const [userDataRequested, setUserDataRequested] = useState<boolean>(false);
+	const [isLoggingOut, setIsLoggingOut] = useState<boolean>(false);
 
 	useEffect(() => {
 		// When the user has a group chat id that means that we need to join the user in the group chat
@@ -127,6 +129,7 @@ export const AuthenticatedApp = ({
 	}, [appReady]); // eslint-disable-line react-hooks/exhaustive-deps
 
 	const handleLogout = useCallback(() => {
+		setIsLoggingOut(true);
 		onLogout();
 		logout();
 	}, [onLogout]);
@@ -149,6 +152,7 @@ export const AuthenticatedApp = ({
 						</RocketChatPublicSettingsProvider>
 					</RocketChatGetUserRolesProvider>
 				</RocketChatProvider>
+				{isLoggingOut && <LogoutLoadingOverlay />}
 			</>
 		);
 	} else if (loading) {

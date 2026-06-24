@@ -56,3 +56,7 @@ export const RegistrationLoadingOverlay = () => (
 export const LoginLoadingOverlay = () => (
 	<LoadingOverlay texts={LOGIN_TEXTS} />
 );
+
+export const LogoutLoadingOverlay = () => (
+	<LoadingOverlay texts={['Sie werden abgemeldet. Einen Moment bitte…']} />
+);
