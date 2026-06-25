@@ -201,7 +201,7 @@ module.exports = (storagePath) => {
 		}
 	].map(({ path: route, ...routeConfig }) =>
 		route
-			? { ...routeConfig, path: path.join(weblatePath, route) }
+			? { ...routeConfig, path: (weblatePath + route).replace(/\\/g, '/') }
 			: routeConfig
 	);
 };

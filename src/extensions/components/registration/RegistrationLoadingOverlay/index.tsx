@@ -3,19 +3,19 @@ import { useEffect, useState } from 'react';
 import './registrationLoadingOverlay.styles.scss';
 
 const REGISTRATION_TEXTS = [
-	‘Ihr Konto wird erstellt …’,
-	‘Die Kontoerstellung kann einen Moment dauern…’,
-	‘Einen Moment bitte…’,
-	‘Gleich geht’s weiter…’,
-	‘Sie werden gleich weitergeleitet…’
+	'Ihr Konto wird erstellt …',
+	'Die Kontoerstellung kann einen Moment dauern…',
+	'Einen Moment bitte…',
+	"Gleich geht's weiter…",
+	'Sie werden gleich weitergeleitet…'
 ];
 
 const LOGIN_TEXTS = [
-	‘Ihre Daten werden geprüft…’,
-	‘Sie werden angemeldet…’,
-	‘Die Anmeldung kann einen Moment dauern…’,
-	‘Einen Moment bitte…’,
-	‘Gleich geht’s weiter…’
+	'Ihre Daten werden geprüft…',
+	'Sie werden angemeldet…',
+	'Die Anmeldung kann einen Moment dauern…',
+	'Einen Moment bitte…',
+	"Gleich geht's weiter…"
 ];
 
 const INTERVAL_MS = 5000;

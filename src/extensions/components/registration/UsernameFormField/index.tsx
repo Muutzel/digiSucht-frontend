@@ -19,6 +19,8 @@ const LocalUsername = ({
 			}
 		}}
 		onValidityChange={() => null}
+		onEmailChange={() => null}
+		onEmailValidityChange={() => null}
 	/>
 );
 

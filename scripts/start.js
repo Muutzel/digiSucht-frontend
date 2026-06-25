@@ -16,6 +16,15 @@ process.on('unhandledRejection', (err) => {
 	throw err;
 });
 
+// Ignore ECONNRESET from HMR websocket disconnects
+process.on('uncaughtException', (err) => {
+	if (err.code === 'ECONNRESET') {
+		console.warn('[dev] ECONNRESET (client disconnected, ignoring)');
+		return;
+	}
+	throw err;
+});
+
 // Ensure environment variables are read.
 require('../config/env');
 
@@ -123,7 +132,7 @@ checkBrowsers(paths.appPath, isInteractive)
 		};
 		const devServer = new WebpackDevServer(serverConfig, compiler);
 		// Launch WebpackDevServer.
-		devServer.startCallback(() => {
+		devServer.start().then(() => {
 			if (isInteractive) {
 				clearConsole();
 			}

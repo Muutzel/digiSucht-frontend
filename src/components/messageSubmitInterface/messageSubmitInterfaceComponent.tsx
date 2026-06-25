@@ -1019,7 +1019,7 @@ export const MessageSubmitInterfaceComponent = ({
 									ref={textareaInputRef}
 									onKeyUp={() => resizeTextarea()}
 									onFocus={(e) => {
-										toggleAbsentMessage(e);
+										toggleAbsentMessage();
 										if (activeSession.isEmptyEnquiry) {
 											setEnquiryHintShown(true);
 										}

@@ -179,13 +179,13 @@ module.exports = function (webpackEnv) {
 							let newContent = `@import "${path.resolve(
 								paths.appSrc,
 								'resources/styles/settings.scss'
-							)}"; `;
+							).replace(/\\/g, '/')}"; `;
 							const settingsPathExtensions = path.resolve(
 								paths.appExtensions,
 								'resources/styles/settings.scss'
 							);
 							if (fs.existsSync(settingsPathExtensions)) {
-								newContent += `@import "${settingsPathExtensions}"; `;
+								newContent += `@import "${settingsPathExtensions.replace(/\\/g, '/')}"; `;
 							}
 							return `${newContent} ${content}`;
 						},

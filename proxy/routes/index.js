@@ -32,11 +32,12 @@
 
 const settingsProxy = require('./settings');
 const weblateProxy = require('./weblate');
+const backendProxy = require('./backend');
 const path = require('path');
 const { proxyPath } = require('../config');
 
 module.exports = (storagePath) =>
-	[...settingsProxy(), ...weblateProxy(storagePath)]
+	[...settingsProxy(), ...weblateProxy(storagePath), ...backendProxy()]
 		.map(({ path: route, ...routeConfig }) =>
 			route
 				? { ...routeConfig, path: path.join(proxyPath, route) }
