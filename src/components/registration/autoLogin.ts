@@ -138,7 +138,8 @@ export const autoLogin = async ({
 	await loginRocketChat(userHash, password);
 
 	if (tenantSettings?.featureToolsEnabled) {
-		await getBudibaseAccessToken(username, password, tenantSettings);
+		// Fire-and-forget: Budibase SSO runs in background and only blocks login
+		getBudibaseAccessToken(username, password, tenantSettings);
 	}
 };
 
