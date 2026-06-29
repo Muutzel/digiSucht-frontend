@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
+import * as ReactDOM from 'react-dom';
 import './registrationLoadingOverlay.styles.scss';
 
 const REGISTRATION_TEXTS = [
@@ -34,7 +35,7 @@ const LoadingOverlay = ({ texts }: LoadingOverlayProps) => {
 		return () => clearInterval(timer);
 	}, [texts]);
 
-	return (
+	return ReactDOM.createPortal(
 		<div className="registrationLoadingOverlay">
 			<div className="registrationLoadingOverlay__content">
 				<div
@@ -45,7 +46,8 @@ const LoadingOverlay = ({ texts }: LoadingOverlayProps) => {
 					{texts[textIndex]}
 				</p>
 			</div>
-		</div>
+		</div>,
+		document.body
 	);
 };
 
@@ -53,9 +55,7 @@ export const RegistrationLoadingOverlay = () => (
 	<LoadingOverlay texts={REGISTRATION_TEXTS} />
 );
 
-export const LoginLoadingOverlay = () => (
-	<LoadingOverlay texts={LOGIN_TEXTS} />
-);
+export const LoginLoadingOverlay = () => <LoadingOverlay texts={LOGIN_TEXTS} />;
 
 export const LogoutLoadingOverlay = () => (
 	<LoadingOverlay texts={['Sie werden abgemeldet. Einen Moment bitte…']} />

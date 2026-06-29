@@ -22,7 +22,7 @@ import { UsernameFormField } from './UsernameFormField';
 import { AgencySelectionFormField } from './AgencyFields';
 import { InputFormField } from './InputFormField';
 import { CheckboxFormField } from './CheckboxFormField';
-import { RegistrationSuccessOverlay } from './RegistrationSuccessOverlay';
+import { redirectToApp } from '../../../components/registration/autoLogin';
 import { RegistrationErrorOverlay } from './RegistrationErrorOverlay';
 import { InfoTooltip } from '../../../components/infoTooltip/InfoTooltip';
 import { useCallback, useContext, useEffect, useMemo, useState } from 'react';
@@ -78,8 +78,6 @@ const RegistrationFormInner = () => {
 
 	const [topics, setTopics] = useState([] as TopicsDataInterface[]);
 	const [valid, setValid] = useState(false); // This needs to be an array to trigger the changes on accordion
-	const [registrationWithSuccess, setRegistrationWithSuccess] =
-		useState(false);
 	const [isUsernameAlreadyInUse, setIsUsernameAlreadyInUse] = useState(false);
 	const [isSubmitting, setIsSubmitting] = useState(false);
 	const [registrationWithError, setRegistrationWithError] = useState(false);
@@ -225,7 +223,7 @@ const RegistrationFormInner = () => {
 						);
 					}
 				})
-				.then(() => setRegistrationWithSuccess(true))
+				.then(() => redirectToApp())
 				.catch((errorRes) => {
 					setIsSubmitting(false);
 					if (
@@ -583,7 +581,6 @@ const RegistrationFormInner = () => {
 			</Form>
 
 			{isSubmitting && <RegistrationLoadingOverlay />}
-			{registrationWithSuccess && <RegistrationSuccessOverlay />}
 			{registrationWithError && <RegistrationErrorOverlay />}
 		</>
 	);
