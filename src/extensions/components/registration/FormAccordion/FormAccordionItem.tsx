@@ -45,9 +45,12 @@ export const FormAccordionItem: FC<
 		.getFieldsError(formFields)
 		.some((error) => error.errors.length !== 0);
 
-	const isValid = !(
-		(submitted || formContext.isFieldsTouched(fieldsToCheck)) && isFieldsInValid
+	const isTouched = formContext.isFieldsTouched(
+		fieldsToCheck.filter((f) => f !== 'topicIds[]'),
+		false
 	);
+
+	const isValid = !((submitted || isTouched) && isFieldsInValid);
 
 	const { t: translate } = useTranslation();
 
