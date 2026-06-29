@@ -8,12 +8,11 @@ const LocalPassword = ({
 }: {
 	onChange?: (value: string) => void;
 }) => {
-	const [password, setPassword] = React.useState();
 	return (
 		<RegistrationPassword
-			onPasswordChange={(password) => setPassword(password)}
-			onValidityChange={(validity) =>
-				validity === VALIDITY_VALID && onChange(password)
+			onPasswordChange={() => null}
+			onValidityChange={(validity, password) =>
+				onChange(validity === VALIDITY_VALID ? password : '')
 			}
 			passwordNote=""
 			onKeyDown={() => null}

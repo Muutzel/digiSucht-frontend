@@ -91,28 +91,37 @@ export const RegistrationPassword = ({
 			setPasswordConfirmationLabelState(null);
 			setPasswordConfirmationLabel(null);
 		}
-	}, [passwordConfirmation, password, passwordConfirmationTouched, translate]);
+	}, [
+		passwordConfirmation,
+		password,
+		passwordConfirmationTouched,
+		translate
+	]);
 
 	useEffect(() => {
-		onValidityChange(isValid);
-	}, [isValid]); // eslint-disable-line react-hooks/exhaustive-deps
+		onValidityChange(isValid, password);
+	}, [isValid, password]); // eslint-disable-line react-hooks/exhaustive-deps
 
 	useEffect(() => {
 		onPasswordChange(password);
 	}, [password]); // eslint-disable-line react-hooks/exhaustive-deps
 
 	useEffect(() => {
-		if (
-			passwordLabelState === VALIDITY_VALID &&
-			passwordConfirmationLabelState === VALIDITY_VALID
-		) {
+		const criteriaValid =
+			passwordCriteriaValidation &&
+			Object.values(passwordCriteriaValidation).every((c) => c);
+		const confirmationValid =
+			inputValuesFit(passwordConfirmation, password) &&
+			passwordConfirmation.length >= 1;
+
+		if (criteriaValid && confirmationValid) {
 			setIsValid(VALIDITY_VALID);
-		} else if (!passwordLabelState && !passwordConfirmationLabelState) {
+		} else if (!password && !passwordConfirmation) {
 			setIsValid(VALIDITY_INITIAL);
 		} else {
 			setIsValid(VALIDITY_INVALID);
 		}
-	}, [passwordLabelState, passwordConfirmationLabelState]);
+	}, [password, passwordConfirmation, passwordCriteriaValidation]);
 
 	const inputItemPassword: InputFieldItem = {
 		content: password,
