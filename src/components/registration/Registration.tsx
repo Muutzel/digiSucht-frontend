@@ -6,7 +6,7 @@ import { useContext, useEffect, useState } from 'react';
 import { getUrlParameter } from '../../utils/getUrlParameter';
 import { WelcomeScreen } from './WelcomeScreen';
 import { InformalContext } from '../../globalState';
-import { RegistrationForm } from './RegistrationForm';
+import { RegistrationForm } from '../../extensions/components/registration/RegistrationForm';
 import '../../resources/styles/styles';
 import { StageLayout } from '../stageLayout/StageLayout';
 import useIsFirstVisit from '../../utils/useIsFirstVisit';
