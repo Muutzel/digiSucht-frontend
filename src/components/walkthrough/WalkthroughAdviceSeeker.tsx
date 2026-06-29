@@ -58,11 +58,11 @@ export const WalkthroughAdviceSeeker = () => {
 		`walkthroughAdviceSeeker_${userId}`;
 
 	const getCurrentLoginSession = () => {
-		const loginTimestamp = sessionStorage.getItem('currentLoginSession');
+		let loginTimestamp = sessionStorage.getItem('currentLoginSession');
 		if (!loginTimestamp) {
 			// Generate a new session identifier for this login
-			const newSession = Date.now().toString();
-			sessionStorage.setItem('currentLoginSession', newSession);
+			loginTimestamp = Date.now().toString();
+			sessionStorage.setItem('currentLoginSession', loginTimestamp);
 		}
 		return loginTimestamp;
 	};
@@ -78,13 +78,13 @@ export const WalkthroughAdviceSeeker = () => {
 		return null;
 	}
 
-	// Only show if initialInquirySent is false and not already shown in this session
-	if (!userData.initialInquirySent && hasShownWalkthrough) {
+	// Never show if user has completed/dismissed the walkthrough
+	if (!userData.isWalkThroughEnabled) {
 		return null;
 	}
 
-	// If not enabled, or if initialInquirySent is true and walkthrough is not enabled, don't show
-	if (!userData.isWalkThroughEnabled && userData.initialInquirySent) {
+	// Don't show again in the same browser session
+	if (hasShownWalkthrough) {
 		return null;
 	}
 
