@@ -12,7 +12,12 @@ import { apiGetTopicsData } from '../../../api/apiGetTopicsData';
 import { CheckboxGroupFormField } from './CheckboxGroupFormField';
 import { RadioBoxGroup } from './RadioBoxGroup';
 import { PasswordFormField } from './PasswordFormField';
-import { apiPostRegistration, FETCH_ERRORS, X_REASON } from '../../../api';
+import {
+	apiPostRegistration,
+	apiPutEmail,
+	FETCH_ERRORS,
+	X_REASON
+} from '../../../api';
 import { UsernameFormField } from './UsernameFormField';
 import { AgencySelectionFormField } from './AgencyFields';
 import { InputFormField } from './InputFormField';
@@ -32,7 +37,10 @@ import LegalLinks from '../../../components/legalLinks/LegalLinks';
 import { FormAccordion } from './FormAccordion/FormAccordion';
 import { FormAccordionItem } from './FormAccordion/FormAccordionItem';
 import { UrlParamsContext } from '../../../globalState/provider/UrlParamsProvider';
-import { RegistrationSubmitProvider, useRegistrationSubmit } from './FormAccordion/RegistrationSubmitContext';
+import {
+	RegistrationSubmitProvider,
+	useRegistrationSubmit
+} from './FormAccordion/RegistrationSubmitContext';
 import { RegistrationLoadingOverlay } from './RegistrationLoadingOverlay';
 
 enum CounsellingRelation {
@@ -201,6 +209,22 @@ const RegistrationFormInner = () => {
 				settings.multitenancyWithSingleDomainEnabled,
 				tenant
 			)
+				.then(() => {
+					if (formValues.email) {
+						return apiPutEmail(formValues.email).catch(
+							(emailError) => {
+								if (emailError.status === 409) {
+									sessionStorage.setItem(
+										'registration_email_conflict',
+										'true'
+									);
+									return;
+								}
+								throw emailError;
+							}
+						);
+					}
+				})
 				.then(() => setRegistrationWithSuccess(true))
 				.catch((errorRes) => {
 					setIsSubmitting(false);
