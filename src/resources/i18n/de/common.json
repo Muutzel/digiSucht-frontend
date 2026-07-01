@@ -1955,6 +1955,7 @@
 			"subline": "Wie läuft die Beratung ab?"
 		},
 		"email": {
+			"infoText": "<strong>Optional können Sie Ihre E-Mail-Adresse angeben</strong><br>Wenn Sie eine E-Mail-Adresse angeben, können Sie Ihr Passwort zurücksetzen und auf Wunsch über Nachrichten Ihrer Beraterin oder Ihres Beraters informiert werden.<br>Diese Angabe ist freiwillig. Ihre E-Mail-Adresse ist für Berater:innen nicht sichtbar.",
 			"label": "E-Mail-Adresse (optional)",
 			"valid": "E-Mail-Adresse ist gültig.",
 			"invalid": "Bitte geben Sie eine gültige E-Mail-Adresse ein.",

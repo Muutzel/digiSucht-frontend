@@ -154,6 +154,11 @@ export const RegistrationUsername = ({
 				onBlur={handleUsernameBlur}
 				onKeyDown={onKeyDown}
 			/>
+			<Text
+				text={translate('registration.email.infoText')}
+				type="standard"
+				className="text__registration_email"
+			/>
 			<InputField
 				item={inputItemEmail}
 				inputHandle={handleEmailChange}

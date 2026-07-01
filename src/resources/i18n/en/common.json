@@ -1925,6 +1925,7 @@
 			"subline": "How does Caritas Counseling & Assistance work?"
 		},
 		"email": {
+			"infoText": "<strong>Optionally, you can provide your email address</strong><br>If you provide an email address, you will be able to reset your password and, if you wish, be notified about messages from your counselor.<br>This is voluntary. Your email address is not visible to counselors.",
 			"label": "Email address (optional)",
 			"valid": "Email address is valid.",
 			"invalid": "Please enter a valid email address.",
