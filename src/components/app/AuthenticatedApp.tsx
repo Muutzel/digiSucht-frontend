@@ -71,7 +71,8 @@ export const AuthenticatedApp = ({
 				notificationType: NOTIFICATION_TYPE_WARNING,
 				title: translate('registration.email.conflict.title'),
 				text: translate('registration.email.conflict.text'),
-				closeable: true
+				closeable: true,
+				timeout: 0
 			});
 		}
 	}, [addNotification]);

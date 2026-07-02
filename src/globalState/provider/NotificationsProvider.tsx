@@ -93,9 +93,9 @@ export function NotificationsProvider(props) {
 			let newNotification = { ...notification };
 			if (!notification.id) {
 				newNotification.id = uuid();
-				if (!notification.timeout) {
-					newNotification.timeout = NOTIFICATION_DEFAULT_TIMEOUT;
-				}
+			}
+			if (notification.timeout === undefined) {
+				newNotification.timeout = NOTIFICATION_DEFAULT_TIMEOUT;
 			}
 
 			setNotifications([...notifications, newNotification]);
