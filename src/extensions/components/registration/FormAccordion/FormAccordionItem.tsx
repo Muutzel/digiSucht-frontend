@@ -20,6 +20,10 @@ export interface FormAccordionItemProps {
 	subTitle?: string;
 	formFields?: string[];
 	errorOnTouchExtraFields?: string[];
+	// When true, this item's warning icon also lights up once the user has
+	// reached the agency step (step 2) without having filled in this item's
+	// fields yet — not just after a full form submit attempt.
+	warnOnAgencyStepIncomplete?: boolean;
 }
 
 export const FormAccordionItem: FC<
@@ -35,17 +39,21 @@ export const FormAccordionItem: FC<
 	handlePanelClick,
 	handleNextStep,
 	activePanel,
-	disableNextButton
+	disableNextButton,
+	warnOnAgencyStepIncomplete = false
 }) => {
 	const formContext = React.useContext(FieldContext);
-	const { submitted } = useRegistrationSubmit();
+	const { submitted, agencyStepIncomplete } = useRegistrationSubmit();
 	const fieldsToCheck = [...formFields, ...errorOnTouchExtraFields];
 
 	const isFieldsInValid = formContext
 		.getFieldsError(formFields)
 		.some((error) => error.errors.length !== 0);
 
-	const isValid = !(submitted && isFieldsInValid);
+	const shouldCheckValidity =
+		submitted || (warnOnAgencyStepIncomplete && agencyStepIncomplete);
+
+	const isValid = !(shouldCheckValidity && isFieldsInValid);
 
 	const { t: translate } = useTranslation();
 

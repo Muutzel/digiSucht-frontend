@@ -170,6 +170,7 @@
 		"ageAndGender.step.title": "Bitte machen Sie Angaben über sich",
 		"agency.error.title": "Keine Beratungsstelle in der Nähe gefunden",
 		"agency.fullFillAllFields": "Leider konnten wir keine Beratungsstelle in Ihrer Nähe finden. Sie können auch eine Postleitzahl in der Nähe Ihres Wohnortes angeben.<br/><br/>Suchtberatung in ihrer Nähe finden Sie auch im Einrichtungsverzeichnis der Deutschen Hauptstelle für Suchtfragen (<a target=\"_blank\" href=\"https://www.dhs.de/service/suchthilfeverzeichnis\">https://www.dhs.de/service/suchthilfeverzeichnis</a>).",
+		"agency.missingRequiredFields": "Damit eine passende Beratungsstelle in Ihrer Nähe gefunden werden kann, sind noch Angaben zu Ihrem Beratungsanliegen erforderlich.",
 		"agency.noAgencyFound": "Leider können wir dir derzeit keine passende Online-Beratungsstelle in deiner Nähe anbieten.",
 		"counsellingRelation": {
 			"options": {

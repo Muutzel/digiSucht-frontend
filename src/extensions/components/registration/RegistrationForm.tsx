@@ -299,6 +299,7 @@ const RegistrationFormInner = () => {
 								'username',
 								'password'
 							]}
+							warnOnAgencyStepIncomplete
 							{...props}
 						>
 							<FormAccordion onComplete={props.handleNextStep}>
@@ -319,6 +320,7 @@ const RegistrationFormInner = () => {
 											'username',
 											'password'
 										]}
+										warnOnAgencyStepIncomplete
 										{...props}
 									>
 										<div className="registrationFormDigi__AgeContainer">
@@ -401,6 +403,7 @@ const RegistrationFormInner = () => {
 											'username',
 											'password'
 										]}
+										warnOnAgencyStepIncomplete
 										{...props}
 									>
 										<RadioBoxGroup
@@ -430,6 +433,7 @@ const RegistrationFormInner = () => {
 											'username',
 											'password'
 										]}
+										warnOnAgencyStepIncomplete
 										{...props}
 									>
 										<div className="registrationFormDigi__InputTopicIdsContainer">
@@ -467,6 +471,7 @@ const RegistrationFormInner = () => {
 											'username',
 											'password'
 										]}
+										warnOnAgencyStepIncomplete
 										{...props}
 									>
 										<RadioBoxGroup
@@ -506,6 +511,7 @@ const RegistrationFormInner = () => {
 							<AgencySelectionFormField
 								preselectedAgencies={preselectedAgencies}
 								consultingType={consultingType}
+								isActive={props.activePanel === 'step-2'}
 							/>
 						</FormAccordionItem>,
 						<FormAccordionItem
