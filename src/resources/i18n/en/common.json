@@ -1163,7 +1163,7 @@
 							"cancel": "Back to login"
 						},
 						"description": "Do you want to reset the password?",
-						"title": "Resetting the password may make it impossible to access your messages."
+						"title": "After resetting your password, some messages may temporarily not be displayed correctly. This is related to the encryption of the messages. You can find more information <a target=\"_blank\" rel=\"noreferrer\" href=\"https://www.suchtberatung.digital/faq-items/wie-kann-ich-vermeiden-dass-meine-nachrichten-beim-zuruecksetzen-des-passworts-nicht-mehr-lesbar-sind/\">here</a>."
 					}
 				}
 			},

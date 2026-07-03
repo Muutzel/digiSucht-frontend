@@ -1173,7 +1173,7 @@
 							"cancel": "Zurück zum Login"
 						},
 						"description": "Möchten Sie das Passwort zurücksetzen?",
-						"title": "Durch das Zurücksetzen des Passworts kann der Zugriff auf Ihre Nachrichten eventuell nicht mehr gewährleistet werden."
+						"title": "Nach dem Zurücksetzen des Passworts könnte es sein, dass einige Nachrichten vorübergehend nicht richtig angezeigt werden. Dies hängt mit der Verschlüsselung der Nachrichten zusammen. Mehr Informationen finden Sie <a target=\"_blank\" rel=\"noreferrer\" href=\"https://www.suchtberatung.digital/faq-items/wie-kann-ich-vermeiden-dass-meine-nachrichten-beim-zuruecksetzen-des-passworts-nicht-mehr-lesbar-sind/\">hier</a>."
 					}
 				}
 			},
