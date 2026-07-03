@@ -2743,8 +2743,9 @@
 		}
 	},
 	"noEmailBanner": {
-		"profileLink": "Add your email address",
-		"text": "to be able to reset your password."
+		"textBeforeLink": "Add your email address ",
+		"profileLink": "here",
+		"textAfterLink": " to be able to reset your password."
 	},
 	"stageLayout": {
 		"helpLink": {

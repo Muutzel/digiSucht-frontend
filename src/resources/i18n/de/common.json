@@ -2768,8 +2768,9 @@
 		}
 	},
 	"noEmailBanner": {
-		"profileLink": "E-Mail-Adresse hinzufügen",
-		"text": "um Ihr Passwort zurücksetzen zu können."
+		"textBeforeLink": "Fügen Sie ",
+		"profileLink": "hier",
+		"textAfterLink": " Ihre E-Mail-Adresse hinzu, um Ihr Passwort zurücksetzen zu können."
 	},
 	"stageLayout": {
 		"helpLink": {

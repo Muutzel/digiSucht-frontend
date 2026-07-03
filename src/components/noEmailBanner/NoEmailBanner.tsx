@@ -57,10 +57,11 @@ export const NoEmailBanner = () => {
 			}}
 		>
 			<p>
-				<Link to="/profile/notifications">
+				{translate('noEmailBanner.textBeforeLink')}
+				<Link to="/profile/allgemeines">
 					{translate('noEmailBanner.profileLink')}
-				</Link>{' '}
-				{translate('noEmailBanner.text')}
+				</Link>
+				{translate('noEmailBanner.textAfterLink')}
 			</p>
 		</Banner>
 	);

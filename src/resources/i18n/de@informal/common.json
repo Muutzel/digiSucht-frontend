@@ -1028,8 +1028,9 @@
 		}
 	},
 	"noEmailBanner": {
-		"profileLink": "E-Mail-Adresse hinzufügen",
-		"text": "um dein Passwort zurücksetzen zu können."
+		"textBeforeLink": "Füge ",
+		"profileLink": "hier",
+		"textAfterLink": " Deine E-Mail-Adresse hinzu, um Dein Passwort zurücksetzen zu können."
 	},
 	"login": {
 		"warning": {
