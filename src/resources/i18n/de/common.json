@@ -1172,7 +1172,7 @@
 							"accept": "Ja, zurücksetzen",
 							"cancel": "Zurück zum Login"
 						},
-						"description": "Möchten Sie das Passwort dennoch zurücksetzen?",
+						"description": "Möchten Sie das Passwort zurücksetzen?",
 						"title": "Durch das Zurücksetzen des Passworts kann der Zugriff auf Ihre Nachrichten eventuell nicht mehr gewährleistet werden."
 					}
 				}

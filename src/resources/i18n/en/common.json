@@ -1162,7 +1162,7 @@
 							"accept": "Yes, reset",
 							"cancel": "Back to login"
 						},
-						"description": "Do you still want to reset the password?",
+						"description": "Do you want to reset the password?",
 						"title": "Resetting the password may make it impossible to access your messages."
 					}
 				}
