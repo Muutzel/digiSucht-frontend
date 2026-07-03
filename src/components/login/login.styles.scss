@@ -95,6 +95,23 @@ $link-hover-text-decoration: $link-text-decoration !default;
 		@include breakpoint($fromLarge) {
 			width: 320px;
 		}
+
+		&__helpLink {
+			color: $link-color;
+			font-weight: $link-font-weight;
+			text-decoration: underline;
+			white-space: nowrap;
+
+			&:hover {
+				text-decoration: $link-hover-text-decoration;
+				cursor: pointer;
+			}
+
+			&:focus-visible {
+				outline: $focus-outline;
+				outline-offset: 2px;
+			}
+		}
 	}
 
 	.button__item {
