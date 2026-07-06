@@ -1921,7 +1921,7 @@
 			"start": "Registrierung"
 		},
 		"user": {
-			"infoText": "Um Ihre Anonymität zu schützen, raten wir Ihnen nicht Ihren tatsächlichen Namen oder Initialen zu verwenden.<br>Wählen Sie bitte einen geeigneten Benutzernamen mit min. 5 Zeichen.",
+			"infoText": "<strong>Bitte wählen Sie Ihren Benutzernamen</strong><br>Um Ihre Anonymität zu schützen, raten wir Ihnen nicht Ihren tatsächlichen Namen oder Initialen zu verwenden.<br>Wählen Sie bitte einen geeigneten Benutzernamen mit min. 5 Zeichen.",
 			"label": "Benutzername",
 			"suitable": "Ihr Benutzername ist geeignet.",
 			"unavailable": "Der Benutzername ist bereits vergeben.",
