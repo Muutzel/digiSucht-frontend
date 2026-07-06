@@ -1213,10 +1213,11 @@
 				},
 				"unauthorized": {
 					"otp": "Ihre Zugangsdaten sind nicht korrekt. Bitte versuchen Sie es erneut.",
-					"text": "Falsche Zugangsdaten oder temporäre Sperre wegen mehrfacher Fehlversuche (15 Min.). Bitte versuchen Sie es (später) erneut."
+					"text": "Login fehlgeschlagen.",
+					"hint": "Hinweis: Nach mehreren Fehlversuchen ist ein Login erst wieder nach 15 Minuten möglich."
 				},
 				"helpLink": {
-					"label": "Hilfe zur Nutzung der Plattform"
+					"label": "Hier finden Sie Hilfe."
 				}
 			}
 		}

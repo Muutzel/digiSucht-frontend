@@ -88,7 +88,13 @@ $link-hover-text-decoration: $link-text-decoration !default;
 
 	&__error {
 		display: flex;
+		flex-direction: column;
+		gap: 2px;
 		color: $form-error;
+
+		p {
+			margin: 0;
+		}
 		width: 280px;
 		margin-bottom: $grid-base-four;
 

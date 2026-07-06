@@ -539,9 +539,21 @@ export const Login = () => {
 										rel="noreferrer"
 										className="loginForm__error__helpLink"
 									>
-										{translate('login.warning.failed.helpLink.label')}
+										{translate(
+											'login.warning.failed.helpLink.label'
+										)}
 									</a>
 								</p>
+								{showLoginError ===
+									translate(
+										'login.warning.failed.unauthorized.text'
+									) && (
+									<p>
+										{translate(
+											'login.warning.failed.unauthorized.hint'
+										)}
+									</p>
+								)}
 							</div>
 						)}
 
