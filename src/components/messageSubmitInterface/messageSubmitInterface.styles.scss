@@ -485,7 +485,12 @@ $inputBoxShadow: inset 0 2px 0 0 $message-submit-interface-textarea-shadow-color
 	.textarea__enquiryHint {
 		font-size: 12px;
 		color: $text-high-emphasis;
-		margin: $grid-base-half $grid-base-two 0;
+		max-width: $fromLarge;
+		position: relative;
+		left: 50%;
+		transform: translateX(-50%);
+		margin: $grid-base-half 0 0;
 		padding: 0;
+		text-align: left;
 	}
 }
