@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useContext, useMemo } from 'react';
+import { useCallback, useContext, useEffect, useState } from 'react';
 import { SESSION_LIST_TYPES } from '../session/sessionHelpers';
 import {
 	AUTHORITIES,
@@ -9,66 +9,162 @@ import {
 	UserDataContext,
 	ActiveSessionContext
 } from '../../globalState';
-import { AskerInfoData } from './AskerInfoData';
+import {
+	ConsultingSessionDataInterface,
+	TopicSessionInterface
+} from '../../globalState/interfaces';
 import { AskerInfoAssign } from './AskerInfoAssign';
-import '../profile/profile.styles';
 import './askerInfo.styles';
 import { AskerInfoTools } from './AskerInfoTools';
-import { Box } from '../box/Box';
+import { ProfileBox } from '../../extensions/components/askerInfo/ProfileBox';
+import { ProfileDataItem } from '../../extensions/components/askerInfo/ProfileDataItem';
+import { AskerInfoDocumentation } from '../../extensions/components/askerInfo/AskerInfoDocumentation';
+import { apiGetUserDataBySessionId } from '../../api/apiGetUserDataBySessionId';
+import { useTranslation } from 'react-i18next';
+import { Box, BoxTypes } from '../box/Box';
+import { format } from 'date-fns';
 
 export const AskerInfoContent = () => {
+	const { t: translate } = useTranslation();
 	const { tenant } = useContext(TenantContext);
 	const { activeSession } = useContext(ActiveSessionContext);
 	const { userData } = useContext(UserDataContext);
+	const [sessionData, setSessionData] =
+		useState<ConsultingSessionDataInterface>(null);
 
 	const { type } = useContext(SessionTypeContext);
 
-	const isSessionAssignAvailable = useMemo(() => {
-		const isPeerChat = activeSession.item.isPeerChat;
-		const isLiveChat = activeSession.isLive;
-		const isGroupChat = activeSession.isGroup;
-		const isEnquiryListView = type === SESSION_LIST_TYPES.ENQUIRY;
-		const isAsker = hasUserAuthority(AUTHORITIES.ASKER_DEFAULT, userData);
-
-		if (isAsker || isLiveChat || isGroupChat) {
-			return false;
+	useEffect(() => {
+		if (activeSession?.item?.id) {
+			apiGetUserDataBySessionId(activeSession.item.id)
+				.then(setSessionData)
+				.catch(console.log);
 		}
+	}, [activeSession?.item?.id]);
 
-		if (isEnquiryListView) {
-			return (
-				isPeerChat &&
+	const formatDate = (dateString) => {
+		if (!dateString) return '';
+		try {
+			return format(new Date(dateString), 'dd.MM.yyyy');
+		} catch (e) {
+			return dateString;
+		}
+	};
+
+	const isSessionAssignAvailable = useCallback(() => {
+		const isPeerChat = activeSession.item.isPeerChat;
+		return (
+			!hasUserAuthority(AUTHORITIES.ASKER_DEFAULT, userData) &&
+			!activeSession.isLive &&
+			!activeSession.isGroup &&
+			((type === SESSION_LIST_TYPES.ENQUIRY &&
 				hasUserAuthority(
 					AUTHORITIES.ASSIGN_CONSULTANT_TO_ENQUIRY,
 					userData
-				)
-			);
-		}
-
-		return hasUserAuthority(
-			isPeerChat
-				? AUTHORITIES.ASSIGN_CONSULTANT_TO_PEER_SESSION
-				: AUTHORITIES.ASSIGN_CONSULTANT_TO_SESSION,
-			userData
+				) &&
+				isPeerChat) ||
+				(type !== SESSION_LIST_TYPES.ENQUIRY &&
+					((isPeerChat &&
+						hasUserAuthority(
+							AUTHORITIES.ASSIGN_CONSULTANT_TO_PEER_SESSION,
+							userData
+						)) ||
+						(!isPeerChat &&
+							hasUserAuthority(
+								AUTHORITIES.ASSIGN_CONSULTANT_TO_SESSION,
+								userData
+							)))))
 		);
 	}, [activeSession, type, userData]);
 
+	const translateKeys = {
+		gender: `profile.gender.options.${sessionData?.gender?.toLowerCase()}`,
+		counselling: `profile.counsellingRelation.${sessionData?.counsellingRelation?.toLowerCase()}`
+	};
+
 	return (
 		<>
-			<Box>
-				<AskerInfoData />
-			</Box>
-			{tenant?.settings?.featureToolsEnabled && (
-				<Box>
-					<AskerInfoTools />
+			{!sessionData && (
+				<Box type={BoxTypes.INFO}>
+					{translate('profile.enquiry.notice')}
 				</Box>
 			)}
-			{isSessionAssignAvailable && (
-				<Box>
-					<div className="askerInfo__assign">
-						<AskerInfoAssign />
-					</div>
-				</Box>
-			)}
+			<div className="askerInfo__content__container">
+				{sessionData && (
+					<ProfileBox title="profile.profilInformation">
+						<ProfileDataItem
+							title="profile.age"
+							content={`${sessionData?.age}`}
+						/>
+						<ProfileDataItem
+							title="profile.gender.title"
+							content={translate(translateKeys.gender)}
+						/>
+						<ProfileDataItem
+							title="profile.status"
+							content={translate(translateKeys.counselling)}
+						/>
+						<ProfileDataItem
+							title="profile.postalCode"
+							content={sessionData?.postcode}
+						/>
+						{sessionData?.agencyName && (
+							<ProfileDataItem
+								title="profile.agencyName"
+								content={sessionData.agencyName}
+							/>
+						)}
+						{sessionData?.create_date && (
+							<ProfileDataItem
+								title="profile.createDate"
+								content={formatDate(sessionData.create_date)}
+							/>
+						)}
+					</ProfileBox>
+				)}
+
+				{tenant?.settings?.featureToolsEnabled && sessionData?.id && (
+					<ProfileBox title="profile.tools.tools">
+						<AskerInfoTools />
+					</ProfileBox>
+				)}
+
+				<ProfileBox title="profile.topic">
+					{(sessionData?.mainTopic || activeSession?.item?.topic) && (
+						<ProfileDataItem
+							title="profile.mainTopic"
+							content={
+								sessionData?.mainTopic?.name ||
+								(
+									activeSession?.item
+										?.topic as TopicSessionInterface
+								)?.name
+							}
+						/>
+					)}
+
+					{sessionData?.topics?.length > 0 && (
+						<ProfileDataItem
+							title="profile.selectedTopics"
+							content={sessionData?.topics
+								.map(({ name }) => name)
+								.join(', ')}
+						/>
+					)}
+				</ProfileBox>
+
+				{tenant?.settings?.featureToolsEnabled && sessionData?.id && (
+					<ProfileBox title="profile.tools.documentation">
+						<AskerInfoDocumentation />
+					</ProfileBox>
+				)}
+
+				{isSessionAssignAvailable() && (
+					<ProfileBox title="userProfile.reassign.title">
+						<AskerInfoAssign title={null} />
+					</ProfileBox>
+				)}
+			</div>
 		</>
 	);
 };
