@@ -29,7 +29,7 @@ import {
 	urlifyLinksInText
 } from '../messageSubmitInterface/richtextHelpers';
 import { VideoCallMessage } from './VideoCallMessage';
-// import { FurtherSteps } from './FurtherSteps';
+import { FurtherSteps } from './FurtherSteps';
 import { MessageAttachment } from './MessageAttachment';
 import { Text } from '../text/Text';
 import './message.styles';
@@ -389,10 +389,10 @@ export const MessageItemComponent = ({
 					}
 				}
 				return;
-			// case isFurtherStepsMessage:
-			// 	return <FurtherSteps />;
-			// case isUpdateSessionDataMessage:
-			// 	return <FurtherSteps />;
+			case isFurtherStepsMessage:
+				return <FurtherSteps />;
+			case isUpdateSessionDataMessage:
+				return <FurtherSteps />;
 			case isAppointmentSet:
 				return (
 					<Appointment
@@ -544,11 +544,7 @@ export const MessageItemComponent = ({
 	)
 		return null;
 
-	if (
-		isUpdateSessionDataMessage ||
-		isRejectedCallInGroupChat ||
-		isFurtherStepsMessage
-	) {
+	if (isUpdateSessionDataMessage || isRejectedCallInGroupChat) {
 		return null;
 	}
 
