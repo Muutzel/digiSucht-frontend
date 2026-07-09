@@ -20,7 +20,7 @@ import {
 	mobileDetailView,
 	mobileListView
 } from '../app/navigationHandler';
-import { ReactComponent as EnvelopeCheckIcon } from '../../resources/img/illustrations/envelope-check.svg';
+import { ReactComponent as EnvelopeCheckIcon } from '../../extensions/resources/img/illustrations/envelope-check.svg';
 import { ReactComponent as WelcomeIcon } from '../../resources/img/illustrations/welcome.svg';
 import './enquiry.styles';
 import { Headline } from '../headline/Headline';
