@@ -12,6 +12,7 @@ import { useAppConfig } from '../../hooks/useAppConfig';
 import { useResponsive } from '../../hooks/useResponsive';
 import LegalLinks from '../legalLinks/LegalLinks';
 import { MENUPLACEMENT_BOTTOM_LEFT } from '../select/SelectDropdown';
+import { MaintenanceBanner } from '../maintenanceBanner/MaintenanceBanner';
 
 interface StageLayoutProps {
 	className?: string;
@@ -41,6 +42,7 @@ export const StageLayout = ({
 
 	return (
 		<div className={clsx('stageLayout', className)}>
+			<MaintenanceBanner />
 			{React.cloneElement(Children.only(stage as ReactElement), {
 				className: 'stageLayout__stage'
 			})}

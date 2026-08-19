@@ -2742,6 +2742,9 @@
 			}
 		}
 	},
+	"maintenanceBanner": {
+		"text": "There may be service disruptions on 09/01/2026 due to maintenance work."
+	},
 	"noEmailBanner": {
 		"textBeforeLink": "Add your email address ",
 		"profileLink": "here",

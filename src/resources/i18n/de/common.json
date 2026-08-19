@@ -2768,6 +2768,9 @@
 			}
 		}
 	},
+	"maintenanceBanner": {
+		"text": "Am 01.09.2026 kann es aufgrund von Wartungsarbeiten zu Störungen kommen."
+	},
 	"noEmailBanner": {
 		"textBeforeLink": "Fügen Sie ",
 		"profileLink": "hier",

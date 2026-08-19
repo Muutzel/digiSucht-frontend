@@ -29,6 +29,7 @@ import { RocketChatUserStatusProvider } from '../../globalState/provider/RocketC
 import { useAppConfig } from '../../hooks/useAppConfig';
 import { E2EEncryptionSupportBanner } from '../E2EEncryptionSupportBanner/E2EEncryptionSupportBanner';
 import { NoEmailBanner } from '../noEmailBanner/NoEmailBanner';
+import { MaintenanceBanner } from '../maintenanceBanner/MaintenanceBanner';
 import { useTranslation } from 'react-i18next';
 import { LogoutLoadingOverlay } from '../../extensions/components/registration/RegistrationLoadingOverlay';
 
@@ -144,6 +145,7 @@ export const AuthenticatedApp = ({
 							<RocketChatSubscriptionsProvider>
 								<RocketChatUnreadProvider>
 									<RocketChatUserStatusProvider>
+										<MaintenanceBanner />
 										<E2EEncryptionSupportBanner />
 										<NoEmailBanner />
 										<Routing logout={handleLogout} />
