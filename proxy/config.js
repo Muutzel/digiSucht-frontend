@@ -17,5 +17,8 @@ module.exports = {
 		useConsultingTypeSlug: !!parseInt(
 			process.env.FRONTEND_REGISTRATION_USE_CONSULTINGTYPE_SLUG || '1'
 		)
+	},
+	maintenanceBanner: {
+		text: process.env.FRONTEND_MAINTENANCE_BANNER_TEXT || null
 	}
 };

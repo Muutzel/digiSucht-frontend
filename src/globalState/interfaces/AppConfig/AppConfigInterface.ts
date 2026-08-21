@@ -34,6 +34,9 @@ export interface AppConfigInterface extends AppSettingsInterface {
 	registration?: {
 		useConsultingTypeSlug?: boolean;
 	};
+	maintenanceBanner?: {
+		text?: string;
+	};
 	user?: {
 		profile?: {
 			visibleOnEnquiry:
